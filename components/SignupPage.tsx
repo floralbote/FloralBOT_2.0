@@ -21,6 +21,7 @@ const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) 
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
+  const [dateInputType, setDateInputType] = useState('text');
 
   useEffect(() => {
     const isValid = 
@@ -151,9 +152,25 @@ const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) 
             </div>
             
             <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-                <div className="flex-grow">
+                <div className="flex-grow relative">
                     <label htmlFor="date-of-birth" className="sr-only">Data de Nascimento</label>
-                    <input id="date-of-birth" name="dateOfBirth" type="date" required value={dateOfBirth} onChange={handleDateOfBirthChange} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Data de Nascimento" />
+                    <input
+                        id="date-of-birth"
+                        name="dateOfBirth"
+                        type={dateInputType}
+                        required
+                        value={dateOfBirth}
+                        onChange={handleDateOfBirthChange}
+                        onFocus={() => setDateInputType('date')}
+                        onBlur={() => { if (!dateOfBirth) setDateInputType('text'); }}
+                        className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200"
+                        placeholder="Data de Nascimento"
+                    />
+                     <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-emerald-700" viewBox="0 0 20 20" fill="currentColor">
+                           <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
+                        </svg>
+                    </div>
                 </div>
                 <div className="flex-shrink-0 sm:w-28">
                      <div className={`relative block w-full h-full px-4 py-3 border rounded-md text-center flex items-center justify-center transition-colors ${getAgeDisplay() === 'N/A' ? 'bg-red-100 border-red-300 text-red-700' : 'bg-emerald-100 border-emerald-300 text-emerald-900'}`}>
