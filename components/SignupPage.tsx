@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Page } from '../types';
 
 interface SignupPageProps {
@@ -13,13 +13,64 @@ const API_BASE_URL = 'http://your-ngrok-url-from-colab.io';
 
 const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) => {
   const [name, setName] = useState('');
+  const [dateOfBirth, setDateOfBirth] = useState('');
+  const [age, setAge] = useState<number | null>(null);
+  const [gender, setGender] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+
+  useEffect(() => {
+    const isValid = 
+        name.trim() !== '' &&
+        email.trim() !== '' &&
+        password.trim() !== '' &&
+        dateOfBirth !== '' &&
+        age !== null && age >= 0 && // Garante que a idade seja um número válido
+        gender !== '';
+    setIsFormValid(isValid);
+  }, [name, email, password, dateOfBirth, age, gender]);
+
+
+  const handleDateOfBirthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const dobString = e.target.value;
+    setDateOfBirth(dobString);
+
+    if (dobString) {
+      const birthDate = new Date(`${dobString}T00:00:00`);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Normaliza para o início do dia para uma comparação precisa
+
+      // Verifica se a data é inválida (ex: 30 de Fev) ou se é uma data futura
+      if (isNaN(birthDate.getTime()) || birthDate > today) {
+        setAge(null); // Marca como inválida
+        return;
+      }
+
+      let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+      const monthDifference = today.getMonth() - birthDate.getMonth();
+      if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+        calculatedAge--;
+      }
+      
+      setAge(calculatedAge >= 0 ? calculatedAge : null);
+    } else {
+      setAge(null); // Reseta se o campo for limpo
+    }
+  };
+  
+  const getAgeDisplay = () => {
+      if(age !== null) return `${age} anos`;
+      if(dateOfBirth) return "N/A"; // Data inserida, mas é inválida
+      return "Idade"; // Placeholder quando o campo está vazio
+  };
 
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isFormValid) return; // Segurança extra
+    
     setIsLoading(true);
     setError('');
 
@@ -36,6 +87,8 @@ const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) 
         headers: {
           'Content-Type': 'application/json',
         },
+        // O backend atual só espera name, email e password.
+        // Se o backend for atualizado para receber os novos campos, eles devem ser incluídos aqui.
         body: JSON.stringify({ name, email, password }),
       });
 
@@ -96,6 +149,29 @@ const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) 
               <label htmlFor="full-name" className="sr-only">Nome Completo</label>
               <input id="full-name" name="name" type="text" required value={name} onChange={e => setName(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Nome Completo" />
             </div>
+            
+            <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+                <div className="flex-grow">
+                    <label htmlFor="date-of-birth" className="sr-only">Data de Nascimento</label>
+                    <input id="date-of-birth" name="dateOfBirth" type="date" required value={dateOfBirth} onChange={handleDateOfBirthChange} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Data de Nascimento" />
+                </div>
+                <div className="flex-shrink-0 sm:w-28">
+                     <div className={`relative block w-full h-full px-4 py-3 border rounded-md text-center flex items-center justify-center transition-colors ${getAgeDisplay() === 'N/A' ? 'bg-red-100 border-red-300 text-red-700' : 'bg-emerald-100 border-emerald-300 text-emerald-900'}`}>
+                        <span className="text-sm font-semibold">{getAgeDisplay()}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <label htmlFor="gender" className="sr-only">Gênero</label>
+                <select id="gender" name="gender" required value={gender} onChange={e => setGender(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200">
+                    <option value="" disabled>Selecione seu gênero</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="NaoInformar">Prefiro não Informar</option>
+                </select>
+            </div>
+
             <div>
               <label htmlFor="email-address" className="sr-only">E-mail</label>
               <input id="email-address" name="email" type="email" autoComplete="email" required value={email} onChange={e => setEmail(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="E-mail" />
@@ -107,7 +183,7 @@ const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) 
           </div>
 
           <div>
-            <button type="submit" disabled={isLoading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-full text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-transform transform hover:scale-105 duration-300 disabled:bg-emerald-400">
+            <button type="submit" disabled={isLoading || !isFormValid} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-full text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-all duration-300 disabled:bg-emerald-300 disabled:cursor-not-allowed disabled:hover:bg-emerald-300 disabled:hover:scale-100 hover:scale-105">
               {isLoading ? 'Cadastrando...' : 'Cadastrar'}
             </button>
           </div>
