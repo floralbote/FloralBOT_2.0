@@ -1,0 +1,1582 @@
+--- START OF FILE index.tsx ---
+
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
+}
+
+const root = ReactDOM.createRoot(rootElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+--- END OF FILE index.tsx ---
+
+--- START OF FILE metadata.json ---
+
+{
+  "name": "30.10 - Copy of FloralBot AI",
+  "description": "An AI-powered chatbot designed to guide users through a gentle anamnesis process for Bach flower therapy, offering personalized essence suggestions based on their emotional state.",
+  "requestFramePermissions": []
+}
+--- END OF FILE metadata.json ---
+
+--- START OF FILE index.html ---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FloralBot AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      .font-lora {
+        font-family: 'Lora', serif;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.20.0",
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "bcrypt": "https://aistudiocdn.com/bcrypt@^6.0.0",
+    "sqlite3": "https://aistudiocdn.com/sqlite3@^5.1.7",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "cors": "https://aistudiocdn.com/cors@^2.8.5",
+    "jsonwebtoken": "https://aistudiocdn.com/jsonwebtoken@^9.0.2",
+    "sqlite": "https://aistudiocdn.com/sqlite@^5.1.1",
+    "dotenv/": "https://aistudiocdn.com/dotenv@^17.2.3/",
+    "pg": "https://aistudiocdn.com/pg@^8.16.3"
+  }
+}
+</script>
+</head>
+  <body class="bg-emerald-900 text-gray-200">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
+--- END OF FILE index.html ---
+
+--- START OF FILE App.tsx ---
+
+import React, { useState, useCallback } from 'react';
+import { Page } from './types';
+import Header from './components/Header';
+import HomePage from './components/HomePage';
+import AboutPage from './components/AboutPage';
+import ChatbotPage from './components/ChatbotPage';
+import AdminPage from './components/AdminPage';
+import SignupPage from './components/SignupPage';
+import LoginPage from './components/LoginPage';
+import WelcomePage from './components/WelcomePage';
+import ProfilePage from './components/ProfilePage';
+
+const App: React.FC = () => {
+  const [currentPage, setCurrentPage] = useState<Page>(Page.WELCOME);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const navigate = useCallback((page: Page) => {
+    setCurrentPage(page);
+  }, []);
+
+  const handleLoginSuccess = useCallback(() => {
+    setIsAuthenticated(true);
+    navigate(Page.HOME);
+  }, [navigate]);
+
+  const handleLogout = useCallback(() => {
+    setIsAuthenticated(false);
+    navigate(Page.WELCOME);
+  }, [navigate]);
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case Page.WELCOME:
+        return <WelcomePage onNavigate={navigate} />;
+      case Page.LOGIN:
+        return <LoginPage onNavigate={navigate} onLoginSuccess={handleLoginSuccess} />;
+      case Page.SIGNUP:
+        return <SignupPage onNavigate={navigate} onSignupSuccess={handleLoginSuccess} />;
+      case Page.HOME:
+        return <HomePage onNavigate={navigate} />;
+      case Page.ABOUT:
+        return <AboutPage />;
+      case Page.CHATBOT:
+        return <ChatbotPage />;
+      case Page.ADMIN:
+        return <AdminPage />;
+      case Page.PROFILE:
+        return <ProfilePage isAuthenticated={isAuthenticated} onLogout={handleLogout} onNavigate={navigate} />;
+      default:
+        return <WelcomePage onNavigate={navigate} />;
+    }
+  };
+
+  const isAuthPage = [Page.WELCOME, Page.LOGIN, Page.SIGNUP].includes(currentPage);
+
+  if (isAuthPage) {
+    return (
+      <div className="min-h-screen flex flex-col bg-emerald-900">
+        <main className="flex-grow flex items-center justify-center p-4">
+          {renderPage()}
+        </main>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-emerald-900">
+      <Header activePage={currentPage} onNavigate={navigate} />
+      <main className="flex-grow container mx-auto p-4 md:p-8">
+        {renderPage()}
+      </main>
+    </div>
+  );
+};
+
+export default App;
+--- END OF FILE App.tsx ---
+
+--- START OF FILE types.ts ---
+
+export enum Page {
+  WELCOME = 'WELCOME',
+  LOGIN = 'LOGIN',
+  HOME = 'HOME',
+  ABOUT = 'ABOUT',
+  CHATBOT = 'CHATBOT',
+  ADMIN = 'ADMIN',
+  SIGNUP = 'SIGNUP',
+  PROFILE = 'PROFILE',
+}
+
+export interface ChatMessage {
+  id: string;
+  sender: 'user' | 'bot';
+  text: string;
+  isStreaming?: boolean;
+}
+
+export interface EssenciaFloral {
+  id: number;
+  nome: string;
+  descricao: string;
+  indicacoes: string;
+  tipo: string;
+}
+
+export interface Anamnese {
+  id: number;
+  data_criacao: string;
+  sugestao_floral_ia: { [key: string]: string };
+  respostas_anamnese: ChatMessage[];
+}
+--- END OF FILE types.ts ---
+
+--- START OF FILE services/geminiService.ts ---
+
+
+import { GoogleGenAI, Chat } from "@google/genai";
+
+const SYSTEM_INSTRUCTION = `Você é um assistente de floralterapia amigável e empático, focado no sistema de florais de Bach. Seu nome é FloralBot. Sua principal função é guiar o usuário através de uma anamnese (conversa investigativa) para entender seus estados emocionais e mentais. Faça perguntas abertas para encorajar o usuário a se expressar. Evite dar diagnósticos médicos ou substituir um profissional de saúde. Seu objetivo é, ao final da conversa, sugerir uma ou mais essências florais de Bach que possam ajudar o usuário. Mantenha um tom calmo, acolhedor e profissional. Responda sempre em português do Brasil.`;
+
+let ai: GoogleGenAI | null = null;
+if (process.env.API_KEY) {
+    ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+}
+
+export const createChat = (): Chat | null => {
+  if (!ai) {
+    console.error("Gemini API key not configured.");
+    return null;
+  }
+  return ai.chats.create({
+    model: 'gemini-2.5-flash',
+    config: {
+      systemInstruction: SYSTEM_INSTRUCTION,
+    },
+  });
+};
+
+export const sendMessageStream = async (chat: Chat, message: string) => {
+    if (!ai) {
+        throw new Error("Gemini API key not configured.");
+    }
+    return chat.sendMessageStream({ message });
+};
+--- END OF FILE services/geminiService.ts ---
+
+--- START OF FILE components/Header.tsx ---
+
+import React from 'react';
+import { Page } from '../types';
+import { HomeIcon } from './icons/HomeIcon';
+import { InfoIcon } from './icons/InfoIcon';
+import { ChatIcon } from './icons/ChatIcon';
+import { UserIcon } from './icons/UserIcon';
+
+interface HeaderProps {
+  activePage: Page;
+  onNavigate: (page: Page) => void;
+}
+
+const NavButton: React.FC<{
+  label: string;
+  page: Page;
+  activePage: Page;
+  onClick: (page: Page) => void;
+  children: React.ReactNode;
+}> = ({ label, page, activePage, onClick, children }) => {
+  const isActive = activePage === page;
+  const baseClasses = 'flex items-center space-x-2 px-4 py-2 rounded-md transition-colors duration-200';
+  const activeClasses = 'bg-emerald-100 text-emerald-800 font-semibold';
+  const inactiveClasses = 'text-emerald-700 hover:bg-emerald-50 hover:text-emerald-900';
+
+  return (
+    <button
+      onClick={() => onClick(page)}
+      className={`${baseClasses} ${isActive ? activeClasses : inactiveClasses}`}
+      aria-current={isActive ? 'page' : undefined}
+    >
+      {children}
+      <span className="hidden md:inline">{label}</span>
+    </button>
+  );
+};
+
+const Header: React.FC<HeaderProps> = ({ activePage, onNavigate }) => {
+  return (
+    <header className="bg-white shadow-md sticky top-0 z-10 border-b border-gray-200">
+      <nav className="container mx-auto px-4 md:px-8 py-3 flex justify-between items-center">
+        <div className="flex items-center space-x-2 cursor-pointer" onClick={() => onNavigate(Page.HOME)}>
+          <svg className="w-8 h-8 text-emerald-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.28 17.22C15.83 17.61 15.22 17.8 14.6 17.75C13.56 17.66 12.5 17.2 11.53 16.41C10.56 15.62 9.88 14.56 9.53 13.4C9.18 12.24 9.21 11 9.61 9.87C10.01 8.74 10.78 7.8 11.8 7.2C12.82 6.6 13.99 6.39 15.13 6.61C16.27 6.83 17.29 7.48 17.97 8.44C18.65 9.4 18.94 10.59 18.77 11.77C18.6 12.95 17.99 14.03 17.1 14.86L18.5 16.25L17.7 17.05L16.28 15.64C16.1 15.8 15.93 15.95 15.75 16.1C16.15 16.51 16.48 16.88 16.28 17.22Z" fill="currentColor"/>
+          </svg>
+          <h1 className="text-xl font-bold text-emerald-800 font-lora">FloralBot AI</h1>
+        </div>
+        <div className="flex items-center space-x-1 md:space-x-2">
+          <NavButton label="Início" page={Page.HOME} activePage={activePage} onClick={onNavigate}>
+            <HomeIcon />
+          </NavButton>
+          <NavButton label="Sobre" page={Page.ABOUT} activePage={activePage} onClick={onNavigate}>
+            <InfoIcon />
+          </NavButton>
+          <NavButton label="Chatbot" page={Page.CHATBOT} activePage={activePage} onClick={onNavigate}>
+            <ChatIcon />
+          </NavButton>
+          <NavButton label="Perfil" page={Page.PROFILE} activePage={activePage} onClick={onNavigate}>
+            <UserIcon />
+          </NavButton>
+        </div>
+      </nav>
+    </header>
+  );
+};
+
+export default Header;
+--- END OF FILE components/Header.tsx ---
+
+--- START OF FILE components/HomePage.tsx ---
+
+
+import React from 'react';
+import { Page } from '../types';
+
+interface HomePageProps {
+  onNavigate: (page: Page) => void;
+}
+
+const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
+  return (
+    <div className="text-center flex flex-col items-center justify-center h-full animate-fade-in">
+      <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-3xl mx-auto">
+        <h1 className="text-4xl md:text-5xl font-bold text-emerald-700 font-lora mb-4">
+          Bem-vindo ao FloralBot AI
+        </h1>
+        <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+          Sua jornada de autoconhecimento e equilíbrio emocional com a ajuda dos florais de Bach começa aqui. Converse com nosso assistente virtual para descobrir as essências que podem harmonizar seu bem-estar.
+        </p>
+        <button
+          onClick={() => onNavigate(Page.CHATBOT)}
+          className="bg-emerald-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-emerald-600 transition-transform transform hover:scale-105 duration-300 shadow-md"
+        >
+          Iniciar Consulta
+        </button>
+        <p className="mt-6 text-sm text-gray-500">
+          Este serviço não substitui a consulta com um profissional de saúde.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default HomePage;
+--- END OF FILE components/HomePage.tsx ---
+
+--- START OF FILE components/AboutPage.tsx ---
+
+
+import React from 'react';
+
+const InfoCard: React.FC<{ title: string; children: React.ReactNode }> = ({ title, children }) => (
+  <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+    <h3 className="text-2xl font-bold text-emerald-700 font-lora mb-3">{title}</h3>
+    <p className="text-gray-600 leading-relaxed">{children}</p>
+  </div>
+);
+
+const AboutPage: React.FC = () => {
+  return (
+    <div className="animate-fade-in max-w-4xl mx-auto">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-white font-lora mb-8">
+        Sobre a Terapia Floral de Bach
+      </h2>
+      <div className="space-y-6">
+        <InfoCard title="O que é?">
+          A Terapia Floral de Bach é um sistema de cura natural, desenvolvido pelo Dr. Edward Bach na década de 1930. Baseia-se no uso de 38 essências extraídas de flores silvestres, cada uma correspondendo a um estado emocional específico. O objetivo é equilibrar as emoções, promovendo bem-estar e saúde.
+        </InfoCard>
+        <InfoCard title="Como funciona?">
+          Dr. Bach acreditava que o desequilíbrio emocional era a verdadeira causa das doenças. As essências florais atuam no campo vibracional da pessoa, ajudando a transmutar emoções negativas como medo, incerteza e solidão em suas virtudes positivas correspondentes, como coragem, fé e paz interior.
+        </InfoCard>
+        <InfoCard title="Para quem é indicada?">
+          A terapia floral é indicada para todas as idades, desde bebês até idosos, e também para animais e plantas. Por ser uma terapia complementar, pode ser utilizada em conjunto com outros tratamentos, sem contraindicações ou efeitos colaterais. Ela trata a pessoa, não a doença.
+        </InfoCard>
+         <InfoCard title="Os 7 Grupos Emocionais">
+          Dr. Bach classificou as 38 essências em sete grupos principais de estados mentais e emocionais: Medo, Incerteza, Falta de interesse no presente, Solidão, Hipersensibilidade a influências e ideias, Desespero ou desalento, e Cuidado excessivo com o bem-estar dos outros.
+        </InfoCard>
+      </div>
+    </div>
+  );
+};
+
+export default AboutPage;
+--- END OF FILE components/AboutPage.tsx ---
+
+--- START OF FILE components/ChatbotPage.tsx ---
+
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import type { Chat } from '@google/genai';
+import { ChatMessage } from '../types';
+import { createChat, sendMessageStream } from '../services/geminiService';
+import { SendArrowIcon } from './icons/SendArrowIcon';
+
+const CHAT_HISTORY_KEY = 'floralbot-chat-history';
+
+const ChatBubble: React.FC<{ message: ChatMessage }> = ({ message }) => {
+  const isUser = message.sender === 'user';
+
+  // Function to parse basic Markdown and render it as HTML.
+  // This makes the bot's responses more readable.
+  const renderFormattedText = (text: string) => {
+    // Replace **bold** with <strong> tags.
+    let formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    
+    // Handle list-like items starting with '*'.
+    // Adds a line break and a bullet point for clarity.
+    formattedText = formattedText.replace(/\s\*\s/g, '<br /><span class="ml-2">&bull;</span> ');
+    
+    // Convert explicit newlines from the model's response into <br> tags.
+    formattedText = formattedText.replace(/\n/g, '<br />');
+
+    return <div dangerouslySetInnerHTML={{ __html: formattedText }} />;
+  };
+
+
+  return (
+    <div className={`flex items-end ${isUser ? 'justify-end' : 'justify-start'}`}>
+      <div
+        className={`px-4 py-3 rounded-2xl max-w-md md:max-w-lg lg:max-w-xl break-words ${
+          isUser
+            ? 'bg-emerald-500 text-white rounded-br-none'
+            : 'bg-gray-200 text-gray-800 rounded-bl-none shadow-md'
+        }`}
+      >
+        {isUser ? message.text : renderFormattedText(message.text)}
+        {message.isStreaming && <span className="inline-block w-2 h-4 bg-gray-600 animate-pulse ml-1"></span>}
+      </div>
+    </div>
+  );
+};
+
+const ChatbotPage: React.FC = () => {
+  const [chat, setChat] = useState<Chat | null>(null);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const initChat = () => {
+      try {
+        const newChat = createChat();
+        if (newChat) {
+          setChat(newChat);
+          const savedHistory = localStorage.getItem(CHAT_HISTORY_KEY);
+          if (savedHistory) {
+            try {
+              const parsedHistory = JSON.parse(savedHistory);
+              if (Array.isArray(parsedHistory) && parsedHistory.length > 0) {
+                setMessages(parsedHistory);
+                return;
+              }
+            } catch (e) {
+              console.error("Failed to parse chat history.", e);
+              localStorage.removeItem(CHAT_HISTORY_KEY);
+            }
+          }
+          setMessages([
+            {
+              id: 'initial',
+              sender: 'bot',
+              text: 'Olá! Sou o FloralBot. Como você está se sentindo hoje?',
+            },
+          ]);
+        } else {
+            setError("Não foi possível iniciar o chat. Verifique se a chave da API está configurada no ambiente.");
+        }
+      } catch (e) {
+        console.error(e);
+        setError("Ocorreu um erro ao iniciar o chat.");
+      }
+    };
+    initChat();
+  }, []);
+
+  useEffect(() => {
+     if (messages.length > 0) {
+        localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
+    }
+  }, [messages]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (!isLoading) {
+      inputRef.current?.focus();
+    }
+  }, [messages, isLoading]);
+
+  const handleSend = useCallback(async () => {
+    if (!input.trim() || isLoading || !chat) return;
+
+    const userMessage: ChatMessage = { id: Date.now().toString(), sender: 'user', text: input.trim() };
+    setMessages((prev) => [...prev, userMessage]);
+    setInput('');
+    setIsLoading(true);
+    setError(null);
+
+    const botMessageId = (Date.now() + 1).toString();
+    const newBotMessage: ChatMessage = { id: botMessageId, sender: 'bot', text: '', isStreaming: true };
+    setMessages((prev) => [...prev, newBotMessage]);
+
+    try {
+      const stream = await sendMessageStream(chat, userMessage.text);
+      let fullText = '';
+      for await (const chunk of stream) {
+        fullText += chunk.text;
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botMessageId ? { ...msg, text: fullText } : msg
+          )
+        );
+      }
+      setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botMessageId ? { ...msg, isStreaming: false } : msg
+          )
+        );
+    } catch (e) {
+      console.error(e);
+      setError("Desculpe, não consegui processar sua mensagem. Tente novamente.");
+       setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botMessageId ? { ...msg, text: "Ocorreu um erro.", isStreaming: false } : msg
+          )
+        );
+    } finally {
+      setIsLoading(false);
+    }
+  }, [input, isLoading, chat]);
+
+  return (
+    <div className="flex flex-col h-[80vh] max-w-4xl mx-auto bg-emerald-800 rounded-2xl shadow-2xl border border-emerald-700 animate-fade-in">
+      <div className="flex-grow p-6 space-y-4 overflow-y-auto">
+        {messages.map((msg) => (
+          <ChatBubble key={msg.id} message={msg} />
+        ))}
+        <div ref={messagesEndRef} />
+      </div>
+      <div className="p-4 border-t border-emerald-700 bg-emerald-800 rounded-b-2xl">
+        {error && <p className="text-red-500 text-sm text-center mb-2">{error}</p>}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSend();
+          }}
+          className="flex items-center space-x-3"
+        >
+          <input
+            ref={inputRef}
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder={isLoading ? "Aguarde a resposta..." : "Digite sua mensagem..."}
+            className="flex-grow p-3 border border-emerald-600 rounded-full focus:outline-none focus:ring-2 focus:ring-emerald-400 transition bg-emerald-700 text-gray-100 placeholder-gray-400"
+            disabled={isLoading || !chat}
+          />
+          <button
+            type="submit"
+            disabled={isLoading || !input.trim() || !chat}
+            className="bg-white text-emerald-500 p-3 rounded-full hover:bg-emerald-50 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed transition-transform transform hover:scale-110"
+            aria-label="Enviar mensagem"
+          >
+            <SendArrowIcon />
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ChatbotPage;
+--- END OF FILE components/ChatbotPage.tsx ---
+
+--- START OF FILE components/AdminPage.tsx ---
+
+
+import React, { useState } from 'react';
+import type { Anamnese, EssenciaFloral } from '../types';
+
+const mockFlorais: EssenciaFloral[] = [
+    { id: 1, nome: "Mimulus", descricao: "Para medos de origem conhecida.", indicacoes: "Timidez, gagueira, medo de doença, escuro, etc.", tipo: "Medo" },
+    { id: 2, nome: "Aspen", descricao: "Para medos e ansiedades vagas, de origem desconhecida.", indicacoes: "Pressentimentos, apreensão, pânico inexplicável.", tipo: "Medo" },
+    { id: 3, nome: "Rock Rose", descricao: "Para terror e pânico extremos.", indicacoes: "Acidentes, emergências, pesadelos.", tipo: "Medo" },
+    { id: 4, nome: "Gorse", descricao: "Para desesperança e pessimismo extremos.", indicacoes: "Sentimento de que não há mais o que fazer.", tipo: "Incerteza" },
+    { id: 5, nome: "Impatiens", descricao: "Para impaciência e irritabilidade.", indicacoes: "Tensão mental, pressa, querer tudo na hora.", tipo: "Solidão" },
+    { id: 6, nome: "Centaury", descricao: "Para os que não sabem dizer não e são submissos.", indicacoes: "Vontade fraca, facilmente dominado pelos outros.", tipo: "Hipersensibilidade" },
+];
+
+const mockAnamneses: Anamnese[] = [
+    {
+        id: 1,
+        data_criacao: "2024-07-28 10:30",
+        sugestao_floral_ia: { floral: "Mimulus", motivo: "Usuário expressou medo específico de falar em público." },
+        respostas_anamnese: [
+            { id: '1', sender: 'bot', text: 'Olá! Como você está se sentindo?' },
+            { id: '2', sender: 'user', text: 'Estou muito ansioso com uma apresentação no trabalho.' },
+            { id: '3', sender: 'bot', text: 'Entendo. Pode me falar mais sobre esse sentimento?' },
+            { id: '4', sender: 'user', text: 'Tenho muito medo de falar em público, de errar e ser julgado.' },
+        ]
+    },
+    {
+        id: 2,
+        data_criacao: "2024-07-27 15:00",
+        sugestao_floral_ia: { floral: "Impatiens", motivo: "Usuário demonstrou irritabilidade e pressa constantes." },
+        respostas_anamnese: [
+            { id: '1', sender: 'bot', text: 'Olá! Como posso ajudar?' },
+            { id: '2', sender: 'user', text: 'Estou sempre sem paciência com as pessoas, tudo parece lento demais.' },
+        ]
+    }
+];
+
+const FloraisManager: React.FC = () => {
+    // In a real app, this state would be managed via API calls
+    const [florais, setFlorais] = useState<EssenciaFloral[]>(mockFlorais);
+
+    return (
+        <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-2xl font-bold text-emerald-700 mb-4">Gerenciar Essências Florais</h3>
+            <div className="overflow-x-auto">
+                <table className="w-full text-left table-auto">
+                    <thead>
+                        <tr className="bg-emerald-100 text-emerald-800">
+                            <th className="p-3">Nome</th>
+                            <th className="p-3">Tipo</th>
+                            <th className="p-3">Indicações</th>
+                            <th className="p-3">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {florais.map(floral => (
+                            <tr key={floral.id} className="border-b hover:bg-gray-50">
+                                <td className="p-3 font-medium">{floral.nome}</td>
+                                <td className="p-3">{floral.tipo}</td>
+                                <td className="p-3 text-sm text-gray-600">{floral.indicacoes}</td>
+                                <td className="p-3">
+                                    <button className="text-blue-500 hover:underline mr-2">Editar</button>
+                                    <button className="text-red-500 hover:underline">Excluir</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+             <button className="mt-4 bg-emerald-500 text-white font-bold py-2 px-4 rounded hover:bg-emerald-600 transition">
+                Adicionar Nova Essência
+            </button>
+        </div>
+    );
+};
+
+const AnamnesesViewer: React.FC = () => {
+    const [anamneses] = useState<Anamnese[]>(mockAnamneses);
+    const [selected, setSelected] = useState<Anamnese | null>(null);
+
+    return (
+        <div className="bg-white p-6 rounded-lg shadow-md">
+            <h3 className="text-2xl font-bold text-emerald-700 mb-4">Visualizar Anamneses</h3>
+            {selected ? (
+                <div>
+                     <button onClick={() => setSelected(null)} className="mb-4 text-emerald-600 hover:underline">
+                        &larr; Voltar para a lista
+                    </button>
+                    <h4 className="font-bold">Anamnese #{selected.id} - {selected.data_criacao}</h4>
+                    <div className="mt-2 p-4 bg-gray-50 border rounded-lg max-h-64 overflow-y-auto">
+                        {selected.respostas_anamnese.map(msg => (
+                           <p key={msg.id} className={`${msg.sender === 'user' ? 'text-right' : 'text-left'}`}>
+                               <span className={`inline-block p-2 my-1 rounded-lg ${msg.sender === 'user' ? 'bg-emerald-100' : 'bg-gray-200'}`}>{msg.text}</span>
+                           </p>
+                        ))}
+                    </div>
+                    <div className="mt-4 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+                        <h5 className="font-semibold text-emerald-800">Sugestão da IA:</h5>
+                        <p><strong>Floral:</strong> {selected.sugestao_floral_ia.floral}</p>
+                        <p><strong>Motivo:</strong> {selected.sugestao_floral_ia.motivo}</p>
+                    </div>
+                </div>
+            ) : (
+                <ul className="space-y-2">
+                    {anamneses.map(item => (
+                        <li key={item.id} onClick={() => setSelected(item)} className="p-3 bg-gray-100 rounded cursor-pointer hover:bg-emerald-100 transition">
+                            Anamnese #{item.id} - {item.data_criacao}
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </div>
+    );
+};
+
+
+const AdminPage: React.FC = () => {
+    const [activeTab, setActiveTab] = useState<'florais' | 'anamneses'>('florais');
+
+    return (
+        <div className="max-w-6xl mx-auto animate-fade-in">
+            <h2 className="text-3xl font-bold text-center text-emerald-800 font-lora mb-6">
+                Painel Administrativo
+            </h2>
+            <div className="flex justify-center border-b mb-6">
+                <button
+                    onClick={() => setActiveTab('florais')}
+                    className={`py-2 px-6 font-semibold ${activeTab === 'florais' ? 'border-b-2 border-emerald-500 text-emerald-600' : 'text-gray-500'}`}
+                >
+                    Essências Florais
+                </button>
+                <button
+                    onClick={() => setActiveTab('anamneses')}
+                    className={`py-2 px-6 font-semibold ${activeTab === 'anamneses' ? 'border-b-2 border-emerald-500 text-emerald-600' : 'text-gray-500'}`}
+                >
+                    Anamneses
+                </button>
+            </div>
+
+            <div>
+                {activeTab === 'florais' && <FloraisManager />}
+                {activeTab === 'anamneses' && <AnamnesesViewer />}
+            </div>
+        </div>
+    );
+};
+
+export default AdminPage;
+--- END OF FILE components/AdminPage.tsx ---
+
+--- START OF FILE components/icons/ChatIcon.tsx ---
+
+
+import React from 'react';
+
+export const ChatIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clipRule="evenodd" />
+    </svg>
+);
+--- END OF FILE components/icons/ChatIcon.tsx ---
+
+--- START OF FILE components/icons/AdminIcon.tsx ---
+
+
+import React from 'react';
+
+export const AdminIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M5 8a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" />
+        <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+    </svg>
+);
+--- END OF FILE components/icons/AdminIcon.tsx ---
+
+--- START OF FILE components/icons/HomeIcon.tsx ---
+
+
+import React from 'react';
+
+export const HomeIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+    </svg>
+);
+--- END OF FILE components/icons/HomeIcon.tsx ---
+
+--- START OF FILE components/icons/InfoIcon.tsx ---
+
+
+import React from 'react';
+
+export const InfoIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+    </svg>
+);
+--- END OF FILE components/icons/InfoIcon.tsx ---
+
+--- START OF FILE components/SignupPage.tsx ---
+
+import React, { useState } from 'react';
+import { Page } from '../types';
+
+interface SignupPageProps {
+  onNavigate: (page: Page) => void;
+  onSignupSuccess: () => void;
+}
+
+const SignupPage: React.FC<SignupPageProps> = ({ onNavigate, onSignupSuccess }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignup = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    // --- Etapa 1: Registrar o usuário ---
+    try {
+      const registerResponse = await fetch('http://localhost:3001/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const registerData = await registerResponse.json();
+
+      if (!registerResponse.ok) {
+        throw new Error(registerData.message || 'Falha ao criar a conta.');
+      }
+      
+      // --- Etapa 2: Logar o usuário automaticamente após o registro ---
+      const loginResponse = await fetch('http://localhost:3001/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+      });
+
+      const loginData = await loginResponse.json();
+
+      if (!loginResponse.ok) {
+          throw new Error(loginData.message || 'Conta criada, mas falha no login automático.');
+      }
+
+      // Salvar token e dados do usuário
+      localStorage.setItem('authToken', loginData.token);
+      localStorage.setItem('userName', loginData.userName);
+      localStorage.setItem('userEmail', loginData.userEmail);
+      
+      onSignupSuccess();
+
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  
+  return (
+    <div className="flex items-center justify-center w-full py-12 px-4 sm:px-6 lg:px-8 animate-fade-in">
+      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-lg">
+        <div>
+          <div className="flex items-center justify-center space-x-2 mb-4 cursor-pointer" onClick={() => onNavigate(Page.WELCOME)}>
+             <svg className="w-8 h-8 text-emerald-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.28 17.22C15.83 17.61 15.22 17.8 14.6 17.75C13.56 17.66 12.5 17.2 11.53 16.41C10.56 15.62 9.88 14.56 9.53 13.4C9.18 12.24 9.21 11 9.61 9.87C10.01 8.74 10.78 7.8 11.8 7.2C12.82 6.6 13.99 6.39 15.13 6.61C16.27 6.83 17.29 7.48 17.97 8.44C18.65 9.4 18.94 10.59 18.77 11.77C18.6 12.95 17.99 14.03 17.1 14.86L18.5 16.25L17.7 17.05L16.28 15.64C16.1 15.8 15.93 15.95 15.75 16.1C16.15 16.51 16.48 16.88 16.28 17.22Z" fill="currentColor"/>
+              </svg>
+              <h1 className="text-xl font-bold text-emerald-700 font-lora">FloralBot AI</h1>
+          </div>
+          <h2 className="mt-6 text-center text-3xl font-bold text-emerald-800 font-lora">
+            Crie sua conta
+          </h2>
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Para começar sua jornada de bem-estar.
+          </p>
+        </div>
+        <form className="mt-8 space-y-6" onSubmit={handleSignup}>
+          {error && <p className="text-red-500 text-sm text-center bg-red-100 p-3 rounded-md">{error}</p>}
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="full-name" className="sr-only">Nome Completo</label>
+              <input id="full-name" name="name" type="text" required value={name} onChange={e => setName(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Nome Completo" />
+            </div>
+            <div>
+              <label htmlFor="email-address" className="sr-only">E-mail</label>
+              <input id="email-address" name="email" type="email" autoComplete="email" required value={email} onChange={e => setEmail(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="E-mail" />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">Senha</label>
+              <input id="password" name="password" type="password" autoComplete="new-password" required value={password} onChange={e => setPassword(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Senha" />
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" disabled={isLoading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-full text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-transform transform hover:scale-105 duration-300 disabled:bg-emerald-400">
+              {isLoading ? 'Cadastrando...' : 'Cadastrar'}
+            </button>
+          </div>
+           <p className="mt-2 text-center text-sm text-gray-600">
+              Já tem uma conta?{' '}
+              <button type="button" onClick={() => onNavigate(Page.LOGIN)} className="font-medium text-emerald-600 hover:text-emerald-500 focus:outline-none">
+                Faça login
+              </button>
+            </p>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default SignupPage;
+--- END OF FILE components/SignupPage.tsx ---
+
+--- START OF FILE components/icons/SendArrowIcon.tsx ---
+
+import React from 'react';
+
+export const SendArrowIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+    </svg>
+);
+--- END OF FILE components/icons/SendArrowIcon.tsx ---
+
+--- START OF FILE components/icons/UserPlusIcon.tsx ---
+
+import React from 'react';
+
+export const UserPlusIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 11a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1v-1z" />
+    </svg>
+);
+--- END OF FILE components/icons/UserPlusIcon.tsx ---
+
+--- START OF FILE components/LoginPage.tsx ---
+
+
+import React, { useState } from 'react';
+import { Page } from '../types';
+
+interface LoginPageProps {
+  onNavigate: (page: Page) => void;
+  onLoginSuccess: () => void;
+}
+
+const LoginPage: React.FC<LoginPageProps> = ({ onNavigate, onLoginSuccess }) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
+
+    try {
+      const response = await fetch('http://localhost:3001/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Falha no login.');
+      }
+      
+      // Save token and user info to local storage
+      localStorage.setItem('authToken', data.token);
+      localStorage.setItem('userName', data.userName);
+      localStorage.setItem('userEmail', data.userEmail);
+      
+      onLoginSuccess();
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex items-center justify-center w-full animate-fade-in">
+      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-2xl shadow-lg">
+        <div>
+           <div className="flex items-center justify-center space-x-2 mb-4 cursor-pointer" onClick={() => onNavigate(Page.WELCOME)}>
+              <svg className="w-8 h-8 text-emerald-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.28 17.22C15.83 17.61 15.22 17.8 14.6 17.75C13.56 17.66 12.5 17.2 11.53 16.41C10.56 15.62 9.88 14.56 9.53 13.4C9.18 12.24 9.21 11 9.61 9.87C10.01 8.74 10.78 7.8 11.8 7.2C12.82 6.6 13.99 6.39 15.13 6.61C16.27 6.83 17.29 7.48 17.97 8.44C18.65 9.4 18.94 10.59 18.77 11.77C18.6 12.95 17.99 14.03 17.1 14.86L18.5 16.25L17.7 17.05L16.28 15.64C16.1 15.8 15.93 15.95 15.75 16.1C16.15 16.51 16.48 16.88 16.28 17.22Z" fill="currentColor"/>
+              </svg>
+              <h1 className="text-xl font-bold text-emerald-700 font-lora">FloralBot AI</h1>
+            </div>
+          <h2 className="mt-6 text-center text-3xl font-bold text-emerald-800 font-lora">
+            Acesse sua conta
+          </h2>
+        </div>
+        <form className="mt-8 space-y-6" onSubmit={handleLogin}>
+          {error && <p className="text-red-500 text-sm text-center">{error}</p>}
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="email-address" className="sr-only">E-mail</label>
+              <input id="email-address" name="email" type="email" autoComplete="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="E-mail" />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">Senha</label>
+              <input id="password" name="password" type="password" autoComplete="current-password" required value={password} onChange={(e) => setPassword(e.target.value)} className="appearance-none relative block w-full px-4 py-3 border border-emerald-300 placeholder-emerald-700 text-emerald-900 rounded-md focus:outline-none focus:ring-emerald-500 focus:border-emerald-500 focus:z-10 sm:text-sm bg-emerald-200" placeholder="Senha" />
+            </div>
+          </div>
+
+          <div>
+            <button type="submit" disabled={isLoading} className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-lg font-medium rounded-full text-white bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500 transition-transform transform hover:scale-105 duration-300 disabled:bg-emerald-400">
+              {isLoading ? 'Entrando...' : 'Entrar'}
+            </button>
+          </div>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Não tem uma conta?{' '}
+              <button type="button" onClick={() => onNavigate(Page.SIGNUP)} className="font-medium text-emerald-600 hover:text-emerald-500 focus:outline-none">
+                Cadastre-se
+              </button>
+            </p>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;
+--- END OF FILE components/LoginPage.tsx ---
+
+--- START OF FILE components/WelcomePage.tsx ---
+
+import React from 'react';
+import { Page } from '../types';
+
+interface WelcomePageProps {
+  onNavigate: (page: Page) => void;
+}
+
+const WelcomePage: React.FC<WelcomePageProps> = ({ onNavigate }) => {
+  return (
+    <div className="text-center flex flex-col items-center justify-center w-full animate-fade-in">
+      <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-md mx-auto w-full">
+        <div className="flex items-center justify-center space-x-3 mb-6">
+          <svg className="w-12 h-12 text-emerald-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM16.28 17.22C15.83 17.61 15.22 17.8 14.6 17.75C13.56 17.66 12.5 17.2 11.53 16.41C10.56 15.62 9.88 14.56 9.53 13.4C9.18 12.24 9.21 11 9.61 9.87C10.01 8.74 10.78 7.8 11.8 7.2C12.82 6.6 13.99 6.39 15.13 6.61C16.27 6.83 17.29 7.48 17.97 8.44C18.65 9.4 18.94 10.59 18.77 11.77C18.6 12.95 17.99 14.03 17.1 14.86L18.5 16.25L17.7 17.05L16.28 15.64C16.1 15.8 15.93 15.95 15.75 16.1C16.15 16.51 16.48 16.88 16.28 17.22Z" fill="currentColor"/>
+          </svg>
+          <h1 className="text-4xl font-bold text-emerald-700 font-lora">FloralBot AI</h1>
+        </div>
+        <p className="text-lg text-gray-600 mb-8">
+          Sua jornada de bem-estar começa aqui.
+        </p>
+
+        <div className="space-y-4">
+          <button
+            onClick={() => onNavigate(Page.LOGIN)}
+            className="w-full bg-emerald-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-emerald-600 transition-transform transform hover:scale-105 duration-300 shadow-md"
+          >
+            Login
+          </button>
+          <button
+            onClick={() => onNavigate(Page.SIGNUP)}
+            className="w-full bg-white text-emerald-500 border border-emerald-500 font-bold py-3 px-8 rounded-full text-lg hover:bg-emerald-50 transition-transform transform hover:scale-105 duration-300"
+          >
+            Criar Conta
+          </button>
+        </div>
+
+        <div className="mt-8">
+            <button
+              onClick={() => onNavigate(Page.HOME)}
+              className="text-sm text-gray-500 hover:text-emerald-600 hover:underline transition-colors duration-200"
+            >
+              Permanecer desconectado
+            </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default WelcomePage;
+--- END OF FILE components/WelcomePage.tsx ---
+
+--- START OF FILE Data/documentacao.txt ---
+
+==================================================
+DOCUMENTAÇÃO TÉCNICA - PROJETO FLORALBOT AI
+==================================================
+
+Versão: 2.0.0
+Data da Última Atualização: 29 de Julho de 2024
+
+------------------------------
+1. VISÃO GERAL DO PROJETO
+------------------------------
+
+O FloralBot AI é uma aplicação web full-stack que combina uma interface de chatbot inteligente com um backend robusto para oferecer uma experiência de anamnese guiada para a terapia com florais de Bach. O projeto visa ser uma ferramenta de autoconhecimento, permitindo que os usuários explorem seus estados emocionais de forma segura e recebam sugestões de essências florais personalizadas, com base nas interações com a IA do Google Gemini.
+
+A arquitetura desacoplada (frontend + backend) permite escalabilidade, segurança e a persistência dos dados do usuário e de suas conversas em um banco de dados PostgreSQL.
+
+------------------------------
+2. STACK TECNOLÓGICA
+------------------------------
+
+A aplicação é dividida em duas partes principais: Frontend e Backend.
+
+**2.1. Frontend (Client-side)**
+- **Framework**: React 19
+- **Linguagem**: TypeScript
+- **Estilização**: TailwindCSS
+- **Fontes**: Inter & Lora (via Google Fonts)
+- **Inteligência Artificial**: Google Gemini API (`@google/genai`)
+  - **Modelo de Linguagem**: `gemini-2.5-flash`
+- **Build & Dependências**:
+  - O projeto utiliza uma abordagem "buildless", carregando as dependências (React, Google GenAI, etc.) diretamente no navegador via `importmap` a partir de um CDN (`aistudiocdn.com`).
+
+**2.2. Backend (Server-side)**
+- **Ambiente de Execução**: Node.js
+- **Framework**: Express.js
+- **Linguagem**: TypeScript
+- **Banco de Dados**: PostgreSQL
+- **Driver do Banco de Dados**: `pg` (node-postgres)
+- **Autenticação**:
+  - **Hashing de Senhas**: `bcrypt`
+  - **Tokens**: JSON Web Tokens (JWT) (`jsonwebtoken`)
+- **Utilitários**:
+  - `cors`: Para habilitar requisições cross-origin do frontend.
+  - `dotenv`: Para gerenciar variáveis de ambiente.
+  - `ts-node-dev`: Para desenvolvimento com hot-reloading.
+
+------------------------------
+3. ESTRUTURA DO PROJETO
+------------------------------
+
+/
+|-- index.html              # Ponto de entrada HTML.
+|-- metadata.json           # Metadados da aplicação.
+|-- index.tsx               # Ponto de entrada do React.
+|-- App.tsx                 # Componente raiz que gerencia a navegação.
+|-- types.ts                # Definições de tipos e interfaces TypeScript.
+|
+|-- components/             # Componentes da UI.
+|   |-- Header.tsx          # Cabeçalho de navegação.
+|   |-- HomePage.tsx        # Página inicial.
+|   |-- ChatbotPage.tsx     # Interface do chatbot.
+|   |-- AdminPage.tsx       # Painel administrativo (com dados mocados).
+|   |-- LoginPage.tsx       # Página de login.
+|   |-- SignupPage.tsx      # Página de cadastro.
+|   |-- WelcomePage.tsx     # Página de boas-vindas.
+|   |-- ProfilePage.tsx     # Página de perfil do usuário.
+|   |-- icons/              # Componentes de ícones SVG.
+|
+|-- services/               # Módulos para lógica de negócio e APIs externas.
+|   |-- geminiService.ts    # Serviço para interagir com a Google Gemini API.
+|
+|-- Data/
+|   |-- documentacao.txt    # Este arquivo.
+|
+|-- backend/                # Pasta raiz do servidor backend.
+    |-- package.json        # Dependências e scripts do backend.
+    |-- tsconfig.json       # Configurações do TypeScript para o backend.
+    |-- src/                # Código-fonte do backend.
+    |   |-- server.ts       # Ponto de entrada do servidor Express.
+    |   |-- database.ts     # Configuração da conexão com o banco de dados PostgreSQL.
+    |   |-- routes/         # Definição das rotas da API.
+    |       |-- auth.ts     # Rotas de autenticação (register, login).
+
+------------------------------
+4. DETALHAMENTO DO FRONTEND
+------------------------------
+
+**4.1. Gerenciamento de Estado e Navegação**
+- O `App.tsx` atua como o controlador principal. Ele usa o hook `useState` para gerenciar a página atual (`currentPage`) e o estado de autenticação (`isAuthenticated`).
+- A navegação é realizada passando a função `navigate` como prop para os componentes filhos, que a invocam para alterar o estado e renderizar uma nova página.
+
+**4.2. Componentes Principais**
+
+- **`WelcomePage.tsx`**: Tela inicial para usuários não autenticados. Oferece as opções de Login, Cadastro ou acesso anônimo.
+- **`LoginPage.tsx`**: Contém o formulário de login.
+  - **Função**: Envia uma requisição `POST` para `http://localhost:3001/auth/login`.
+  - **Sucesso**: Salva o `authToken`, `userName` e `userEmail` recebidos no `localStorage` e chama `onLoginSuccess` para atualizar o estado global do app.
+  - **Erro**: Exibe mensagens de erro recebidas da API.
+- **`SignupPage.tsx`**: Contém o formulário de cadastro.
+  - **Função**: Envia uma requisição `POST` para `http://localhost:3001/auth/register`.
+  - **Sucesso**: Após o cadastro bem-sucedido, realiza automaticamente uma chamada para o endpoint de login para obter um token, proporcionando uma experiência de "auto-login". Em seguida, chama `onSignupSuccess`.
+- **`ProfilePage.tsx`**: Exibe os dados do usuário.
+  - **Função**: Ao montar, lê `userName` e `userEmail` do `localStorage` para exibir os dados do usuário logado. Permite ao usuário fazer logout.
+  - **Logout**: Limpa os dados do usuário e o `authToken` do `localStorage` e chama `onLogout`.
+- **`ChatbotPage.tsx`**: O coração da aplicação.
+  - **Inicialização**: Cria uma sessão de chat com a Gemini API usando `geminiService`.
+  - **Persistência**: Carrega e salva o histórico de mensagens no `localStorage` (`floralbot-chat-history`) para que o usuário não perca a conversa ao recarregar a página.
+  - **Streaming**: Envia as mensagens do usuário e recebe as respostas do bot em tempo real (stream), atualizando a UI progressivamente.
+- **`AdminPage.tsx`**: Painel para gerenciamento.
+  - **Estado Atual**: Utiliza dados mocados (hardcoded) para simular a visualização de essências e anamneses.
+  - **Visão Futura**: Projetado para, no futuro, fazer chamadas a endpoints de API protegidos para gerenciar dados reais do banco de dados.
+
+**4.3. Serviço Gemini (`geminiService.ts`)**
+- Módulo responsável por toda a comunicação com a Google Gemini API.
+- **`createChat()`**: Inicializa uma nova instância de chat, configurando o modelo (`gemini-2.5-flash`) e a instrução de sistema (`SYSTEM_INSTRUCTION`) que define a persona e o comportamento do FloralBot.
+- **`sendMessageStream()`**: Envia a mensagem do usuário para a API e retorna o objeto de stream para ser consumido pelo `ChatbotPage`.
+
+------------------------------
+5. DETALHAMENTO DO BACKEND
+------------------------------
+
+**5.1. Ponto de Entrada (`server.ts`)**
+- Inicializa o servidor Express.
+- Configura middlewares essenciais:
+  - `cors()`: Permite que o frontend (rodando em um domínio/porta diferente) faça requisições para a API.
+  - `express.json()`: Habilita o parsing de corpos de requisição no formato JSON.
+- Importa e utiliza as rotas definidas (ex: `authRoutes`).
+- Define uma rota raiz (`/`) para verificação de status.
+
+**5.2. Conexão com Banco de Dados (`database.ts`)**
+- Utiliza o pacote `pg` para se conectar ao PostgreSQL.
+- Cria um `Pool` de conexões, que é mais eficiente para gerenciar múltiplas conexões simultâneas.
+- A configuração da conexão é feita através da variável de ambiente `DATABASE_URL`, garantindo que nenhuma credencial seja exposta no código.
+- Habilita SSL em produção, um requisito comum para bancos de dados na nuvem (como Nhost, Heroku, etc.).
+- Exporta um objeto `db` com um método `query` simplificado para ser usado nas rotas.
+
+**5.3. Rotas de Autenticação (`routes/auth.ts`)**
+- Define os endpoints para registro e login de usuários.
+- **`POST /auth/register`**:
+  - **Corpo da Requisição**: `{ "name": "...", "email": "...", "password": "..." }`
+  - **Processo**:
+    1. Valida se todos os campos foram recebidos.
+    2. Verifica se o e-mail já existe no banco de dados para evitar duplicatas.
+    3. Usa `bcrypt.hash` para gerar um hash seguro da senha.
+    4. Insere o novo usuário (`name`, `email`, `hashedPassword`) na tabela `users`.
+  - **Resposta de Sucesso (201)**: `{ "message": "User created successfully", "userId": "..." }`
+  - **Respostas de Erro**: `400` (campos faltando), `409` (e-mail já existe), `500` (erro de servidor).
+- **`POST /auth/login`**:
+  - **Corpo da Requisição**: `{ "email": "...", "password": "..." }`
+  - **Processo**:
+    1. Busca o usuário no banco de dados pelo e-mail.
+    2. Se o usuário não for encontrado, retorna erro `401` (não autorizado).
+    3. Usa `bcrypt.compare` para comparar a senha fornecida com o hash armazenado no banco.
+    4. Se a senha for válida, gera um JWT usando `jsonwebtoken.sign`. O token contém o ID e o nome do usuário e tem um tempo de expiração (ex: '1h').
+  - **Resposta de Sucesso (200)**: `{ "token": "...", "userName": "...", "userEmail": "..." }`
+  - **Respostas de Erro**: `400` (campos faltando), `401` (credenciais inválidas), `500` (erro de servidor).
+
+------------------------------
+6. CONFIGURAÇÃO E EXECUÇÃO
+------------------------------
+
+**6.1. Variáveis de Ambiente**
+É crucial configurar as seguintes variáveis de ambiente para que a aplicação funcione corretamente.
+
+- **Para o Frontend** (gerenciada pelo ambiente de deploy, como Vercel/Netlify):
+  - `API_KEY`: Sua chave da API do Google Gemini.
+
+- **Para o Backend** (em um arquivo `.env` na pasta `backend/` para desenvolvimento local):
+  - `DATABASE_URL`: A string de conexão do seu banco de dados PostgreSQL (ex: `postgres://user:password@host:port/database`).
+  - `JWT_SECRET`: Uma string longa e aleatória usada para assinar os tokens JWT.
+
+**6.2. Execução Local**
+
+1.  **Backend**:
+    - Navegue até a pasta `backend/`.
+    - Rode `npm install` para instalar as dependências.
+    - Crie o arquivo `.env` com as variáveis acima.
+    - Rode `npm run dev` para iniciar o servidor em modo de desenvolvimento (geralmente na porta 3001).
+
+2.  **Frontend**:
+    - A aplicação frontend não requer um processo de build. Ela pode ser servida por qualquer servidor de arquivos estáticos simples. Uma forma fácil é usar a extensão "Live Server" no VS Code a partir da pasta raiz do projeto.
+
+**6.3. Deploy (Publicação)**
+
+1.  **Banco de Dados**: Crie um banco de dados PostgreSQL em um provedor de nuvem (ex: Nhost, Supabase, Render, Aiven) e execute o script SQL para criar as tabelas.
+2.  **Backend**: Faça o deploy da pasta `backend/` em um serviço de hospedagem de aplicações Node.js (ex: Render, Heroku). Configure as variáveis de ambiente `DATABASE_URL` e `JWT_SECRET` no painel do provedor.
+3.  **Frontend**: Faça o deploy da pasta raiz do projeto em um serviço de hospedagem de sites estáticos (ex: Vercel, Netlify). Configure a variável de ambiente `API_KEY` e atualize as chamadas `fetch` em `LoginPage.tsx` e `SignupPage.tsx` para apontar para a URL pública do seu backend.
+--- END OF FILE Data/documentacao.txt ---
+
+--- START OF FILE components/ProfilePage.tsx ---
+
+import React, { useState, useEffect } from 'react';
+import { Page } from '../types';
+import { PencilIcon } from './icons/PencilIcon';
+
+interface ProfilePageProps {
+  isAuthenticated: boolean;
+  onLogout: () => void;
+  onNavigate: (page: Page) => void;
+}
+
+const ProfilePage: React.FC<ProfilePageProps> = ({ isAuthenticated, onLogout, onNavigate }) => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      const storedName = localStorage.getItem('userName') || '';
+      const storedEmail = localStorage.getItem('userEmail') || '';
+      setName(storedName);
+      setEmail(storedEmail);
+    }
+  }, [isAuthenticated]);
+
+  const handleSave = (e: React.FormEvent) => {
+    e.preventDefault();
+    // In a real app, this would be an API call to update user data
+    console.log('Saving:', { name, email });
+    // For demonstration, we can update localStorage as well
+    localStorage.setItem('userName', name);
+    localStorage.setItem('userEmail', email);
+    setSuccessMessage('Perfil atualizado com sucesso!');
+    setTimeout(() => setSuccessMessage(''), 3000); // Clear message after 3 seconds
+  };
+  
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    onLogout();
+  };
+
+
+  if (!isAuthenticated) {
+    return (
+      <div className="text-center flex flex-col items-center justify-center h-full animate-fade-in">
+        <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-md mx-auto">
+          <h2 className="text-2xl font-bold text-emerald-700 font-lora mb-4">Acesso Restrito</h2>
+          <p className="text-gray-600 mb-6">Você precisa estar logado para acessar seu perfil.</p>
+          <button
+            onClick={() => onNavigate(Page.LOGIN)}
+            className="bg-emerald-500 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-emerald-600 transition-transform transform hover:scale-105 duration-300 shadow-md"
+          >
+            Ir para Login
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="max-w-2xl mx-auto animate-fade-in">
+      <div className="bg-white p-8 rounded-lg shadow-md text-gray-800">
+        <h2 className="text-3xl font-bold text-emerald-700 font-lora mb-6 text-center">
+          Meu Perfil
+        </h2>
+        {successMessage && (
+          <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4 text-center" role="alert">
+            <span className="block sm:inline">{successMessage}</span>
+          </div>
+        )}
+        <form onSubmit={handleSave} className="space-y-6">
+          <div>
+            <label htmlFor="profile-name" className="block text-sm font-medium text-gray-700 mb-1">
+              Nome
+            </label>
+            <div className="relative">
+              <input
+                id="profile-name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              />
+               <span className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400">
+                 <PencilIcon />
+               </span>
+            </div>
+          </div>
+          <div>
+            <label htmlFor="profile-email" className="block text-sm font-medium text-gray-700 mb-1">
+              E-mail
+            </label>
+            <input
+              id="profile-email"
+              type="email"
+              value={email}
+              disabled
+              className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
+            />
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+             <button
+              type="submit"
+              className="w-full bg-emerald-500 text-white font-bold py-3 px-6 rounded-full hover:bg-emerald-600 transition-transform transform hover:scale-105 duration-300"
+            >
+              Salvar Alterações
+            </button>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="w-full bg-red-500 text-white font-bold py-3 px-6 rounded-full hover:bg-red-600 transition-transform transform hover:scale-105 duration-300"
+            >
+              Sair (Logout)
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+export default ProfilePage;
+--- END OF FILE components/ProfilePage.tsx ---
+
+--- START OF FILE components/icons/PencilIcon.tsx ---
+
+import React from 'react';
+
+export const PencilIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.5L16.732 3.732z" />
+    </svg>
+);
+--- END OF FILE components/icons/PencilIcon.tsx ---
+
+--- START OF FILE components/icons/UserIcon.tsx ---
+
+import React from 'react';
+
+export const UserIcon: React.FC = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+    </svg>
+);
+--- END OF FILE components/icons/UserIcon.tsx ---
+
+--- START OF FILE backend/package.json ---
+
+
+{
+  "name": "floralbot-backend",
+  "version": "1.0.0",
+  "description": "Backend for FloralBot AI",
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "node dist/server.js",
+    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.12",
+    "@types/pg": "^8.11.6",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  }
+}
+--- END OF FILE backend/package.json ---
+
+--- START OF FILE backend/tsconfig.json ---
+
+
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true
+  }
+}
+--- END OF FILE backend/tsconfig.json ---
+
+--- START OF FILE backend/src/database.ts ---
+
+
+import { Pool } from 'pg';
+import 'dotenv/config'; // Loads variables from .env file
+
+// The Pool manages multiple connections to the database.
+// It automatically reads the connection string from the DATABASE_URL environment variable.
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  // For production environments with SSL (Nhost requires this):
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+
+// We export the query object from the pool to be used in the routes.
+// This allows us to make queries in a simple way.
+export const db = {
+  query: (text: string, params?: any[]) => pool.query(text, params),
+};
+
+// Optional connection test
+pool.connect((err, client, release) => {
+  if (err) {
+    return console.error('Error acquiring client for PostgreSQL connection', err.stack);
+  }
+  console.log('Successfully connected to PostgreSQL database!');
+  client.release(); // Release the client back to the pool
+});
+--- END OF FILE backend/src/database.ts ---
+
+--- START OF FILE backend/src/server.ts ---
+
+
+import express from 'express';
+import cors from 'cors';
+import './database'; // Import to initialize the database connection pool
+import authRoutes from './routes/auth';
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors()); // Allows requests from your frontend
+// FIX: Assign express.json() to a variable before passing to app.use to help with type inference, which was causing an overload resolution error.
+const jsonParser = express.json();
+app.use(jsonParser); // Parses incoming JSON requests
+
+// Routes
+app.use('/auth', authRoutes);
+// You can add more routes here, for example:
+// app.use('/api', anamnesesRoutes);
+
+// Test Route
+app.get('/', (req, res) => {
+  res.send('FloralBot AI Backend is running!');
+});
+
+const startServer = () => {
+  try {
+    app.listen(PORT, () => {
+      console.log(`Server is listening on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    throw error;
+  }
+};
+
+startServer();
+--- END OF FILE backend/src/server.ts ---
+
+--- START OF FILE backend/src/routes/auth.ts ---
+
+
+import { Router } from 'express';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { db } from '../database'; // Import the new PostgreSQL db connection
+
+const router = Router();
+const JWT_SECRET = process.env.JWT_SECRET || 'your-super-secret-key'; // Use an environment variable in production!
+
+// POST /auth/register
+router.post('/register', async (req, res) => {
+  const { name, email, password } = req.body;
+
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: 'Please provide all required fields.' });
+  }
+
+  try {
+    const existingUserResult = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (existingUserResult.rows.length > 0) {
+      return res.status(409).json({ message: 'Email already in use.' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const result = await db.query(
+      'INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id', 
+      [name, email, hashedPassword]
+    );
+    
+    res.status(201).json({ message: 'User created successfully', userId: result.rows[0].id });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server error during registration.' });
+  }
+});
+
+// POST /auth/login
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Please provide email and password.' });
+    }
+
+    try {
+        const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+        const user = result.rows[0];
+
+        if (!user) {
+            return res.status(401).json({ message: 'Invalid credentials.' });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ message: 'Invalid credentials.' });
+        }
+
+        const token = jwt.sign({ userId: user.id, name: user.name }, JWT_SECRET, { expiresIn: '1h' });
+
+        res.status(200).json({ token, userName: user.name, userEmail: user.email });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server error during login.' });
+    }
+});
+
+export default router;
+--- END OF FILE backend/src/routes/auth.ts ---
