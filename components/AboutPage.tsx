@@ -16,10 +16,10 @@ const AboutPage: React.FC = () => {
       </h2>
       <div className="space-y-6">
         <InfoCard title="O que é?">
-          A Terapia Floral de Bach é um sistema de cura natural, desenvolvido pelo Dr. Edward Bach na década de 1930. Baseia-se no uso de 38 essências extraídas de flores silvestres, cada uma correspondendo a um estado emocional específico. O objetivo é equilibrar as emoções, promovendo bem-estar e saúde.
+          A Terapia Floral de Bach é um sistema de cura natural, desenvolvido pelo Dr. Edward Bach na década de 1930. Baseia-se no uso de 38 essências extraídas de flores silvestres, cada одна correspondendo a um estado emocional específico. O objetivo é equilibrar as emoções, promovendo bem-estar e saúde.
         </InfoCard>
         <InfoCard title="Como funciona?">
-          Dr. Bach acreditava que o desequilíbrio emocional era a verdadeira causa das doenças. As essências florais atuam no campo vibracional da pessoa, ajudando a transmutar emoções negativas como medo, incerteza e solidão em suas virtudes positivas correspondentes, como coragem, fé e paz interior.
+          Dr. Bach acreditava que as emoções em desordem podiam causar doenças. As essências florais ajudam a harmonizar nosso interior, transformando sentimentos ruins, como medo e incerteza, em qualidades boas, como coragem e paz.
         </InfoCard>
         <InfoCard title="Para quem é indicada?">
           A terapia floral é indicada para todas as idades, desde bebês até idosos, e também para animais e plantas. Por ser uma terapia complementar, pode ser utilizada em conjunto com outros tratamentos, sem contraindicações ou efeitos colaterais. Ela trata a pessoa, não a doença.

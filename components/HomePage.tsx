@@ -9,7 +9,7 @@ interface HomePageProps {
 const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
   return (
     <div className="text-center flex flex-col items-center justify-center h-full animate-fade-in">
-      <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-3xl mx-auto">
+      <div className="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-3xl mx-auto w-full">
         <h1 className="text-4xl md:text-5xl font-bold text-emerald-700 font-lora mb-4">
           Bem-vindo ao FloralBot AI
         </h1>
