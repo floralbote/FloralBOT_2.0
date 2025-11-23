@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import type { Anamnese, EssenciaFloral } from '../types';
 
@@ -8,6 +9,10 @@ const mockFlorais: EssenciaFloral[] = [
     { id: 4, nome: "Gorse", descricao: "Para desesperança e pessimismo extremos.", indicacoes: "Sentimento de que não há mais o que fazer.", tipo: "Incerteza" },
     { id: 5, nome: "Impatiens", descricao: "Para impaciência e irritabilidade.", indicacoes: "Tensão mental, pressa, querer tudo na hora.", tipo: "Solidão" },
     { id: 6, nome: "Centaury", descricao: "Para os que não sabem dizer não e são submissos.", indicacoes: "Vontade fraca, facilmente dominado pelos outros.", tipo: "Hipersensibilidade" },
+    { id: 7, nome: "Agrimony", descricao: "Para quem esconde tormentos atrás de um rosto alegre.", indicacoes: "Ansiedade escondida por humor, vício, busca de paz a qualquer custo.", tipo: "Hipersensibilidade" },
+    { id: 8, nome: "Chicory", descricao: "Para os possessivos e superprotetores.", indicacoes: "Manipulação, autocomiseração, exige atenção e gratidão.", tipo: "Cuidado Excessivo" },
+    { id: 9, nome: "Vervain", descricao: "Para excesso de entusiasmo e fanatismo.", indicacoes: "Tensão por excesso de esforço, tenta converter os outros, injustiça.", tipo: "Cuidado Excessivo" },
+    { id: 10, nome: "Scleranthus", descricao: "Para indecisão entre duas opções.", indicacoes: "Oscilação de humor, falta de equilíbrio, não pede conselhos.", tipo: "Incerteza" },
 ];
 
 const mockAnamneses: Anamnese[] = [
