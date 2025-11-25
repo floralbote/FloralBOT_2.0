@@ -1,431 +1,1001 @@
-relato_usuario,essencia_sugerida
-"Tenho medo de andar de avião e do escuro",Mimulus
-"Sinto uma angústia mas não sei explicar o motivo",Aspen
-"Tenho pânico e terror noturno frequente",Rock Rose
-"Não tenho mais esperanças que as coisas melhorem",Gorse
-"Fico irritado com pessoas lentas",Impatiens
-"Não consigo dizer não para meus amigos",Centaury
-"Estou sempre sorrindo para esconder minha tristeza",Agrimony
-"Faço tudo pela minha família e eles não me valorizam",Chicory
-"Não consigo relaxar, preciso convencer todos das minhas ideias",Vervain
-"Fico oscilando entre duas opções e não decido nada",Scleranthus
-"Morro de medo de aranhas e insetos",Mimulus
-"Acordo com uma sensação ruim de que algo vai acontecer",Aspen
-"Fiquei paralisado de medo no acidente",Rock Rose
-"Já tentei de tudo e nada funciona, desisti",Gorse
-"Não tenho paciência para esperar em filas",Impatiens
-"Faço tudo o que me pedem, mesmo sem querer",Centaury
-"Odeio discussões, finjo que concordo para ter paz",Agrimony
-"Só quero que meus filhos fiquem perto de mim",Chicory
-"Fico indignado com injustiças e luto até o fim",Vervain
-"Hoje acho uma coisa, amanhã acho outra",Scleranthus
-"Tenho medo de ficar doente",Mimulus
-"Sinto arrepios sem motivo aparente",Aspen
-"Tenho ataques de pânico repentinos",Rock Rose
-"Sinto que meu caso é perdido",Gorse
-"Fico nervoso quando as coisas não andam no meu ritmo",Impatiens
-"Deixo minhas vontades de lado para agradar",Centaury
-"Bebo para esquecer meus problemas e relaxar",Agrimony
-"Organizo a vida de todo mundo e ninguém agradece",Chicory
-"Não consigo desligar minha mente, estou sempre militando",Vervain
-"É uma tortura ter que escolher entre duas roupas",Scleranthus
-"Sou muito tímido e tenho vergonha de falar em público",Mimulus
-"Tenho um pressentimento ruim o tempo todo",Aspen
-"Acordo gritando de terror",Rock Rose
-"Não adianta tentar mais nada",Gorse
-"Detesto gente que fala devagar",Impatiens
-"Sou muito submisso nas relações",Centaury
-"Faço piada dos meus problemas para não preocupar ninguém",Agrimony
-"Me sinto magoada quando não seguem meus conselhos",Chicory
-"Fico exausto de tanto tentar converter as pessoas",Vervain
-"Meu humor muda de uma hora para outra drasticamente",Scleranthus
-"Tenho receio de perder meu emprego",Mimulus
-"Sinto uma presença estranha às vezes",Aspen
-"Sinto que meu coração vai explodir de tanto medo",Rock Rose
-"Perdi a fé de que vou me curar",Gorse
-"Quero tudo para ontem",Impatiens
-"Tenho dificuldade em impor limites",Centaury
-"Busco agitação e festas para não pensar na vida",Agrimony
-"Eu sei o que é melhor para eles",Chicory
-"Sou fanático pelas minhas crenças",Vervain
-"Fico em cima do muro o tempo todo",Scleranthus
-"Não gosto de lugares fechados, me dá medo",Mimulus
-"Tenho medo do desconhecido",Aspen
-"O medo é tão intenso que perco a fala",Rock Rose
-"Estou resignado com meu sofrimento",Gorse
-"Sou muito agitado e não consigo ficar parado",Impatiens
-"Fico exausto de tanto servir aos outros",Centaury
-"Engulo sapos para manter a harmonia",Agrimony
-"Sinto ciúmes quando dão atenção para outros",Chicory
-"Me sacrifico por uma causa nobre sem limites",Vervain
-"Não consigo decidir o cardápio do almoço",Scleranthus
-"Tenho pavor de altura",Mimulus
-"Acordo suando frio sem saber porquê",Aspen
-"Entro em choque em situações de emergência",Rock Rose
-"Não acredito que algo possa me ajudar",Gorse
-"Fico tamborilando os dedos de impaciência",Impatiens
-"Não tenho força de vontade para negar favores",Centaury
-"Choro escondido no travesseiro",Agrimony
-"Cobro atenção porque eu dou muito amor",Chicory
-"Fico tensa tentando mudar a opinião dos outros",Vervain
-"Uma hora quero sair, na outra quero ficar",Scleranthus
-"Tenho medo de cachorros bravos",Mimulus
-"Sinto uma ansiedade que não consigo identificar a causa",Aspen
-"Tenho pesadelos aterrorizantes",Rock Rose
-"Sinto um desânimo profundo e sem saída",Gorse
-"Me irrito fácil com atrasos",Impatiens
-"Sinto que não tenho personalidade própria",Centaury
-"Sou a alma da festa, mas por dentro estou triste",Agrimony
-"Só cuido de você porque te amo",Chicory
-"Tenho excesso de entusiasmo e afasto as pessoas",Vervain
-"Minha instabilidade me deixa tonta",Scleranthus
-"Sinto medo de provas e exames",Mimulus
-"Tenho medo de espíritos ou fantasmas",Aspen
-"Sinto um pavor incontrolável",Rock Rose
-"Acho que vou ficar assim para sempre",Gorse
-"Tomo decisões precipitadas por pressa",Impatiens
-"Sou facilmente dominado por pessoas fortes",Centaury
-"Evito ficar sozinho para não pensar nos problemas",Agrimony
-"Me sinto abandonada se não me ligam",Chicory
-"Fico revoltado com quem não entende minha visão",Vervain
-"Nunca sei se fiz a escolha certa",Scleranthus
-"Tenho medo de falar em público e travar",Mimulus
-"Sinto um medo vago, como se algo ruim fosse acontecer",Aspen
-"Fico apavorado só de pensar na situação",Rock Rose
-"Já desisti de encontrar uma solução para meu problema",Gorse
-"Não suporto gente que trabalha devagar",Impatiens
-"Acabo fazendo o que os outros querem para evitar conflito",Centaury
-"Uso drogas ou álcool para fugir da realidade",Agrimony
-"Manipulo situações para ter as pessoas perto",Chicory
-"Sou dono da verdade",Vervain
-"Oscilo entre alegria e tristeza rapidamente",Scleranthus
-"Tenho medo da morte",Mimulus
-"Sinto uma vibração ruim neste lugar",Aspen
-"Meus cabelos ficam em pé de tanto terror",Rock Rose
-"Aceitei que minha doença é crônica",Gorse
-"Fico louco quando o computador trava",Impatiens
-"Sou um capacho dos outros",Centaury
-"Minto dizendo que estou bem",Agrimony
-"Faço chantagem emocional sem perceber",Chicory
-"Estou sempre tenso tentando salvar o mundo",Vervain
-"Fico paralisado diante de duas opções",Scleranthus
-"Tenho medo de ladrão",Mimulus
-"Tenho medo do escuro desde criança",Aspen
-"Fiquei cego de medo na hora",Rock Rose
-"Não há mais nada a fazer",Gorse
-"Termino as frases das pessoas porque elas demoram",Impatiens
-"Sempre cedo para não magoar ninguém",Centaury
-"Sou o pacificador, odeio conflito",Agrimony
-"Ninguém cuida de mim como eu cuido deles",Chicory
-"Falo com muita ênfase e gesticulo muito",Vervain
-"Perco oportunidades por indecisão",Scleranthus
-"Tenho medo de ficar pobre",Mimulus
-"Sinto medo mas não sei explicar",Aspen
-"Sinto um pânico gelado na espinha",Rock Rose
-"Estou condenado a sofrer",Gorse
-"Ando sempre rápido, não gosto de passear",Impatiens
-"Faço as tarefas dos meus colegas e me sobrecarrego",Centaury
-"Roo as unhas para esconder o nervosismo",Agrimony
-"Gosto de ter minha família sob minhas asas",Chicory
-"Sou insistente demais",Vervain
-"Minha mente é uma gangorra",Scleranthus
-"Tenho medo de andar de elevador",Mimulus
-"Sinto medos inexplicáveis à noite",Aspen
-"Entrei em pânico quando vi o acidente",Rock Rose
-"Não tenho esperança de melhora",Gorse
-"Não consigo relaxar, estou sempre ligado",Impatiens
-"Me anulo para satisfazer os outros",Centaury
-"Tenho medo de agulha",Mimulus
-"Tenho medo que algo terrível aconteça com minha família sem motivo",Aspen
-"Fico paralisada e não consigo reagir",Rock Rose
-"Acho inútil tentar outro tratamento",Gorse
-"Fico nervoso se o trânsito para",Impatiens
-"Sou bonzinho demais e abusam disso",Centaury
-"Tenho medo de trovão e tempestade",Mimulus
-"Sinto uma apreensão constante",Aspen
-"É um medo pavoroso que toma conta de mim",Rock Rose
-"Estou resignada, nada vai mudar",Gorse
-"Como muito rápido, não tenho paciência",Impatiens
-"Viro escravo das vontades alheias",Centaury
-"Tenho medo de ficar sozinho em casa",Mimulus
-"Tenho medo de magia negra ou coisas ocultas",Aspen
-"Meu corpo treme todo de pavor",Rock Rose
-"Não vejo perspectiva de futuro",Gorse
-"Tiro as coisas da mão dos outros para fazer logo",Impatiens
-"Deixo de viver minha vida para viver a dos outros",Centaury
-"Tenho medo de cobras",Mimulus
-"Sinto um medo sutil, impalpável",Aspen
-"Tive um ataque de terror noturno",Rock Rose
-"Acho que nasci para sofrer",Gorse
-"Não suporto gente lerda",Impatiens
-"Tenho vontade fraca",Centaury
-"Tenho medo de ser assaltado",Mimulus
-"Acordo assustado sem saber o porquê",Aspen
-"Sinto um pavor que paralisa meus músculos",Rock Rose
-"Desisti de lutar",Gorse
-"Fico irritada quando tenho que esperar mesa no restaurante",Impatiens
-"Sou muito servil",Centaury
-"Tenho medo de críticas",Mimulus
-"Sinto presságios ruins",Aspen
-"O pânico me domina completamente",Rock Rose
-"Não acredito mais na felicidade",Gorse
-"Sou acelerado demais",Impatiens
-"Não sei impor respeito",Centaury
-"Tenho medo de ratos",Mimulus
-"Tenho imaginação fértil para coisas ruins",Aspen
-"É um terror indescritível",Rock Rose
-"Estou no fundo do poço e não vou sair",Gorse
-"Não tenho paciência com detalhes",Impatiens
-"Sempre digo sim",Centaury
-"Tenho medo de multidão",Mimulus
-"Sinto medo do silêncio",Aspen
-"Fico em estado de choque fácil",Rock Rose
-"Minha situação é irreversível",Gorse
-"Quero resultados imediatos",Impatiens
-"Faço tudo para não desagradar",Centaury
-"Sinto um tormento mental mas sorrio",Agrimony
-"Preciso controlar a vida dos meus filhos",Chicory
-"Não consigo dormir pensando nas causas que defendo",Vervain
-"Fico enjoado de tanta indecisão",Scleranthus
-"Fumo para aliviar a tensão interna",Agrimony
-"Corrijo as pessoas porque sei o jeito certo",Chicory
-"Fico impaciente com quem não tem ideais",Vervain
-"Um dia amo, no outro odeio",Scleranthus
-"Tenho medo de palco",Mimulus
-"Sinto medos vagos durante o dia",Aspen
-"Sinto um medo agudo e extremo",Rock Rose
-"Não vale a pena tentar",Gorse
-"Sou impaciente com crianças",Impatiens
-"Me sinto um mártir",Centaury
-"Tenho medo de dor física",Mimulus
-"Sinto que estou sendo observado",Aspen
-"Entro em pânico em lugares fechados",Rock Rose
-"Nada funciona para mim",Gorse
-"Fico batendo o pé de nervoso",Impatiens
-"Me sinto fraco diante dos outros",Centaury
-"Tenho medo de envelhecer",Mimulus
-"Tenho medo de pesadelos",Aspen
-"Foi a experiência mais aterrorizante da minha vida",Rock Rose
-"Estou descrente da vida",Gorse
-"Falo rápido demais",Impatiens
-"Sou facilmente manipulável",Centaury
-"Sufoco meus problemas com comida",Agrimony
-"Me sinto rejeitada se não aceitam minha ajuda",Chicory
-"Sou taxado de fanático pelos amigos",Vervain
-"Me falta equilíbrio e estabilidade",Scleranthus
-"Tenho medo de água funda",Mimulus
-"Sinto uma ameaça invisível",Aspen
-"Fiquei branco de tanto terror",Rock Rose
-"Já joguei a toalha",Gorse
-"Odeio desperdício de tempo",Impatiens
-"Me sinto culpado se digo não",Centaury
-"Busco companhia para não encarar meus pensamentos",Agrimony
-"Tenho pena de mim mesma pelo tanto que faço",Chicory
-"Quero mudar o mundo sozinho",Vervain
-"Sou uma pessoa de extremos",Scleranthus
-"Tenho medo de dirigir",Mimulus
-"Sinto calafrios sem razão",Aspen
-"Perdi o controle de tanto medo",Rock Rose
-"Não tenho mais ânimo para tentar",Gorse
-"Pego as frases no ar antes da pessoa terminar",Impatiens
-"Faço sacrifícios excessivos pelos outros",Centaury
-"Sempre minimizo meus problemas",Agrimony
-"Fico triste quando meus filhos não me visitam",Chicory
-"Sou incansável no trabalho",Vervain
-"Mudo de ideia a cada 5 minutos",Scleranthus
-"Tenho medo de sangue",Mimulus
-"Tenho medo de dormir no escuro",Aspen
-"Foi um susto mortal",Rock Rose
-"Estou conformada com a dor",Gorse
-"Não consigo meditar, minha mente corre",Impatiens
-"Me deixo levar pela opinião alheia",Centaury
-"Tenho medo de perder dinheiro",Mimulus
-"Sinto uma inquietude inexplicável",Aspen
-"Tive vontade de fugir de tanto pânico",Rock Rose
-"Não vejo chance de sucesso",Gorse
-"Sou muito elétrica",Impatiens
-"Esqueço de mim para cuidar dos outros",Centaury
-"Tenho medo de autoridade",Mimulus
-"Tenho sonhos ruins que não lembro",Aspen
-"Fiquei petrificado",Rock Rose
-"É tarde demais para mim",Gorse
-"Detesto esperar o semáforo abrir",Impatiens
-"Sou passivo demais",Centaury
-"Tenho medo de câncer",Mimulus
-"Sinto medo de assombração",Aspen
-"Meu coração quase parou de susto",Rock Rose
-"Estou sem esperança nenhuma",Gorse
-"Não tenho paciência para explicações longas",Impatiens
-"Preciso aprender a me defender",Centaury
-"Tenho medo de barata",Mimulus
-"Sinto medo de pressentimentos",Aspen
-"É um pavor súbito",Rock Rose
-"Estou derrotado",Gorse
-"Quero tudo pra agora",Impatiens
-"Não tenho voz ativa",Centaury
-"Tenho medo de altura e de cair",Mimulus
-"Tenho medo do que não vejo",Aspen
-"Sinto um terror absoluto",Rock Rose
-"Nada vai adiantar mesmo",Gorse
-"Trabalho melhor sozinho",Impatiens
-"Sou muito complacente",Centaury
-"Tenho medo de ser rejeitado",Mimulus
-"Sinto medo sem objeto definido",Aspen
-"Tive uma crise de pânico forte",Rock Rose
-"Não há solução para o meu caso",Gorse
-"Sou apressado por natureza",Impatiens
-"Faço o que mandam",Centaury
-"Tenho medo de elevador cair",Mimulus
-"Sinto que algo vai dar errado",Aspen
-"Fiquei mudo de terror",Rock Rose
-"Perdi a esperança",Gorse
-"Não aguento gente devagar",Impatiens
-"Sou capacho de todos",Centaury
-"Tenho medo de injeção",Mimulus
-"Sinto arrepios na nuca",Aspen
-"O medo me paralisou",Rock Rose
-"Desisti de melhorar",Gorse
-"Fico irritado com a lentidão alheia",Impatiens
-"Não sei negar nada",Centaury
-"Tenho medo de tempestades",Mimulus
-"Sinto medos noturnos",Aspen
-"Pânico total na hora",Rock Rose
-"Estou sem fé",Gorse
-"Tudo tem que ser rápido",Impatiens
-"Me anulo pelos outros",Centaury
-"Tenho medo de doenças graves",Mimulus
-"Sinto apreensão sem motivo",Aspen
-"Terror noturno recorrente",Rock Rose
-"Não vejo saída para mim",Gorse
-"Sou impaciente demais",Impatiens
-"Faço tudo pelos outros",Centaury
-"Uso o riso como escudo",Agrimony
-"Sou muito apegada às pessoas",Chicory
-"Sou guerreiro da luz em excesso",Vervain
-"Fico balançando entre sim e não",Scleranthus
-"Tenho fobia de aranhas",Mimulus
-"Sinto que algo ruim paira no ar",Aspen
-"Fico cego de pânico",Rock Rose
-"Acho que meu problema não tem cura",Gorse
-"Fico nervoso em filas de banco",Impatiens
-"Não consigo impor minha vontade",Centaury
-"Tenho medo de lugares altos",Mimulus
-"Sinto um medo misterioso",Aspen
-"Sinto um terror que gela o sangue",Rock Rose
-"Já aceitei que vou sofrer sempre",Gorse
-"Detesto esperar resposta de mensagem",Impatiens
-"Sou muito influenciável",Centaury
-"Tenho medo de ir ao médico",Mimulus
-"Tenho medo de vultos",Aspen
-"Sinto pavor de morrer",Rock Rose
-"Não tenho ânimo para recomeçar",Gorse
-"Fico andando de um lado para o outro de ansiedade",Impatiens
-"Preciso agradar a todos",Centaury
-"Tenho medo de falhar",Mimulus
-"Sinto uma angústia inexplicável",Aspen
-"Tive um pesadelo horrível e acordei gritando",Rock Rose
-"Nada dá certo para mim",Gorse
-"Fico irritado se a internet está lenta",Impatiens
-"Não sei dizer basta",Centaury
-"Escondo minhas lágrimas",Agrimony
-"Fico doente se não me dão atenção",Chicory
-"Falo com convicção exagerada",Vervain
-"Me falta firmeza nas escolhas",Scleranthus
-"Tenho medo de escada rolante",Mimulus
-"Sinto medo de energias ruins",Aspen
-"Fiquei em estado de choque",Rock Rose
-"Estou desiludido com a vida",Gorse
-"Quero resolver tudo num instante",Impatiens
-"Sou servente de todo mundo",Centaury
-"Tenho medo de fogos de artifício",Mimulus
-"Sinto medo do escuro total",Aspen
-"Foi um pânico incontrolável",Rock Rose
-"Não tenho mais forças para lutar",Gorse
-"Sou muito ansioso e apressado",Impatiens
-"Me sinto fraco de personalidade",Centaury
-"Tenho medo de ser demitido",Mimulus
-"Tenho medo de coisas sobrenaturais",Aspen
-"Sinto terror ao ver sangue",Rock Rose
-"Acho que nunca vou melhorar",Gorse
-"Não tenho paciência para ler textos longos",Impatiens
-"Sou explorada no trabalho",Centaury
-"Tenho medo de ficar sozinha",Mimulus
-"Sinto um medo vago e persistente",Aspen
-"Fico paralisada em situações de perigo",Rock Rose
-"Estou resignada",Gorse
-"Sou muito agoniado com demora",Impatiens
-"Não tenho coragem de dizer não",Centaury
-"Tenho medo de brigas",Mimulus
-"Sinto presságios negativos",Aspen
-"Tive um ataque de pânico no shopping",Rock Rose
-"Já tentei tudo, não tem jeito",Gorse
-"Gosto de trabalhar no meu ritmo rápido",Impatiens
-"Sou muito boazinha e sofro por isso",Centaury
-"Estou sempre alegre, mesmo sofrendo",Agrimony
-"Só quero gratidão pelo que faço",Chicory
-"Não descanso enquanto não convenço",Vervain
-"Sou uma gangorra emocional",Scleranthus
-"Tenho medo de aranha caranguejeira",Mimulus
-"Sinto medo de espíritos",Aspen
-"Fiquei aterrorizado com a notícia",Rock Rose
-"Perdi as esperanças",Gorse
-"Fico nervosa com gente lerda",Impatiens
-"Não consigo me posicionar",Centaury
-"Tenho medo de altura e vertigem",Mimulus
-"Sinto medo sem saber de quê",Aspen
-"Sinto um pavor que me impede de respirar",Rock Rose
-"Não vejo luz no fim do túnel para mim",Gorse
-"Sou impaciente no trânsito",Impatiens
-"Faço as vontades do meu marido sempre",Centaury
-"Tenho medo de dentista",Mimulus
-"Sinto medo de algo que não vejo",Aspen
-"Fico em pânico com barulhos altos",Rock Rose
-"Estou sem esperanças",Gorse
-"Odeio esperar em consultório",Impatiens
-"Não sei negar ajuda",Centaury
-"Tenho medo de sapo",Mimulus
-"Tenho medo de dormir sozinho",Aspen
-"Foi um terror absoluto",Rock Rose
-"Acho que é o fim da linha",Gorse
-"Fico batendo caneta na mesa de impaciência",Impatiens
-"Sou capacho da família",Centaury
-"Sou a pessoa mais feliz do mundo (só que não)",Agrimony
-"Corrijo a postura dos outros para o bem deles",Chicory
-"Me revolto com a apatia dos outros",Vervain
-"Fico dias sem decidir o que comprar",Scleranthus
-"Tenho medo de ser julgada",Mimulus
-"Sinto medo de premonições",Aspen
-"Fiquei gelado de pavor",Rock Rose
-"Nada mais importa",Gorse
-"Sou acelerada no dia a dia",Impatiens
-"Faço tudo para evitar briga",Centaury
-"Tenho medo de ficar pobre na velhice",Mimulus
-"Sinto medo de sensações estranhas",Aspen
-"Tive uma crise de terror",Rock Rose
-"Estou entregue ao destino",Gorse
-"Detesto esperar o download",Impatiens
-"Sou muito submissa ao meu chefe",Centaury
-"Tenho medo de assalto a mão armada",Mimulus
-"Sinto um medo oculto",Aspen
-"Fico paralisada de medo",Rock Rose
-"Não acredito em cura",Gorse
-"Sou impaciente com idosos",Impatiens
-"Me sinto usada pelas pessoas",Centaury
-"Tenho medo de falar errado",Mimulus
-"Sinto medo de sombras",Aspen
-"É um medo que vira pânico",Rock Rose
-"Estou desenganado",Gorse
-"Não tenho paciência para ensinar",Impatiens
-"Digo sim querendo dizer não",Centaury
-"Tenho medo de trovoadas",Mimulus
-"Sinto medo irracional",Aspen
-"Sinto terror de avião caindo",Rock Rose
-"Não tenho fé que vá melhorar",Gorse
-"Faço tudo correndo",Impatiens
-"Sou serviçal demais",Centaury
-"Tenho medo de contrair doenças",Mimulus
-"Sinto medo do futuro incerto",Aspen
-"Fico apavorada com gritos",Rock Rose
-"Estou pessimista ao extremo",Gorse
-"Sou irritadiço com demora",Impatiens
-"Me deixo dominar fácil",Centaury
+id,relato_usuario,essencia_sugerida
+1,"Tenho medo de andar de avião e do escuro",Mimulus
+2,"Sinto uma angústia mas não sei explicar o motivo",Aspen
+3,"Tenho pânico e terror noturno frequente",Rock Rose
+4,"Não tenho mais esperanças que as coisas melhorem",Gorse
+5,"Fico irritado com pessoas lentas",Impatiens
+6,"Não consigo dizer não para meus amigos",Centaury
+7,"Estou sempre sorrindo para esconder minha tristeza",Agrimony
+8,"Faço tudo pela minha família e eles não me valorizam",Chicory
+9,"Não consigo relaxar, preciso convencer todos das minhas ideias",Vervain
+10,"Fico oscilando entre duas opções e não decido nada",Scleranthus
+11,"Tenho pavor de altura e lugares altos",Mimulus
+12,"Sinto um medo vago que não sei de onde vem",Aspen
+13,"Fiquei paralisado de tanto terror no acidente",Rock Rose
+14,"Já desisti de procurar uma cura",Gorse
+15,"Odeio esperar em filas, sou muito apressado",Impatiens
+16,"Sou capacho dos outros, faço tudo que pedem",Centaury
+17,"Bebo para esquecer meus problemas e parecer feliz",Agrimony
+18,"Ninguém cuida de mim como eu cuido deles",Chicory
+19,"Fico indignado com injustiças e luto até o fim",Vervain
+20,"Hoje quero uma coisa, amanhã quero outra",Scleranthus
+21,"Tenho medo de ficar doente e ir ao médico",Mimulus
+22,"Acordo com pressentimento ruim e tremores",Aspen
+23,"Sinto que vou morrer de tanto pânico",Rock Rose
+24,"Acho que nasci para sofrer e não tem jeito",Gorse
+25,"Fico nervoso quando o computador trava",Impatiens
+26,"Não sei negar favores, sou muito bonzinho",Centaury
+27,"Odeio discussões, finjo que concordo para ter paz",Agrimony
+28,"Só quero que meus filhos fiquem perto de mim",Chicory
+29,"Sou fanático pelas minhas crenças e ideais",Vervain
+30,"É uma tortura ter que escolher entre duas roupas",Scleranthus
+31,"Tenho medo de aranhas e insetos",Mimulus
+32,"Sinto arrepios e presença estranha no quarto",Aspen
+33,"Acordo gritando de terror durante a noite",Rock Rose
+34,"Perdi a fé de que vou me recuperar",Gorse
+35,"Quero tudo para ontem, não tenho paciência",Impatiens
+36,"Deixo minhas vontades de lado para agradar",Centaury
+37,"Sou a alma da festa mas choro por dentro",Agrimony
+38,"Organizo a vida de todo mundo e ninguém agradece",Chicory
+39,"Não consigo desligar minha mente, estou sempre militando",Vervain
+40,"Fico em cima do muro o tempo todo",Scleranthus
+41,"Tenho medo de perder o emprego e ficar pobre",Mimulus
+42,"Sinto que algo ruim vai acontecer com minha família",Aspen
+43,"Fiquei cego e mudo de tanto medo na hora",Rock Rose
+44,"Estou resignado com meu sofrimento crônico",Gorse
+45,"Fico batendo o pé de nervoso com a demora",Impatiens
+46,"Sou facilmente dominado por pessoas fortes",Centaury
+47,"Uso drogas para fugir da realidade chata",Agrimony
+48,"Me sinto magoada quando não seguem meus conselhos",Chicory
+49,"Fico exausto de tanto tentar converter as pessoas",Vervain
+50,"Minha instabilidade de humor me deixa tonta",Scleranthus
+51,"Tenho medo de falar em público e travar",Mimulus
+52,"Tenho medo de fantasmas e espíritos",Aspen
+53,"Entro em choque em situações de emergência",Rock Rose
+54,"Não adianta tentar mais nada, é inútil",Gorse
+55,"Não suporto gente que trabalha devagar",Impatiens
+56,"Acabo fazendo o que os outros querem para evitar conflito",Centaury
+57,"Minto dizendo que estou bem para não preocupar",Agrimony
+58,"Faço chantagem emocional sem perceber",Chicory
+59,"Sou dono da verdade e tento impor minha visão",Vervain
+60,"Nunca sei se fiz a escolha certa",Scleranthus
+61,"Tenho medo da morte e de morrer",Mimulus
+62,"Sinto medo do escuro total e silêncio",Aspen
+63,"Sinto um pânico gelado na espinha",Rock Rose
+64,"Estou condenado a sofrer nesta vida",Gorse
+65,"Como muito rápido, não mastigo direito",Impatiens
+66,"Sou um mártir, me sacrifico por todos",Centaury
+67,"Busco agitação e festas para não pensar na vida",Agrimony
+68,"Cobro atenção porque eu dou muito amor",Chicory
+69,"Estou sempre tenso tentando salvar o mundo",Vervain
+70,"Oscilo entre alegria e tristeza rapidamente",Scleranthus
+71,"Tenho medo de elevador e lugares fechados",Mimulus
+72,"Sinto uma vibração ruim neste lugar",Aspen
+73,"Meus cabelos ficam em pé de tanto terror",Rock Rose
+74,"Aceitei que minha doença é crônica e sem cura",Gorse
+75,"Termino as frases das pessoas porque elas demoram",Impatiens
+76,"Sempre cedo para não magoar ninguém",Centaury
+77,"Sou o pacificador, engulo sapos",Agrimony
+78,"Manipulo situações para ter as pessoas perto",Chicory
+79,"Falo com muita ênfase e gesticulo muito",Vervain
+80,"Fico paralisado diante de duas opções",Scleranthus
+81,"Tenho medo de agulha e injeção",Mimulus
+82,"Tenho pesadelos que não lembro mas acordo mal",Aspen
+83,"Fiquei petrificado de medo",Rock Rose
+84,"Não há mais nada a fazer por mim",Gorse
+85,"Ando sempre rápido, não gosto de passear",Impatiens
+86,"Faço as tarefas dos meus colegas e me sobrecarrego",Centaury
+87,"Roo as unhas para esconder o nervosismo",Agrimony
+88,"Gosto de ter minha família sob minhas asas",Chicory
+89,"Sou insistente demais com minhas ideias",Vervain
+90,"Perco oportunidades por indecisão",Scleranthus
+91,"Tenho medo de cachorro bravo na rua",Mimulus
+92,"Sinto medo de assombração e vultos",Aspen
+93,"Tive vontade de fugir de tanto pânico",Rock Rose
+94,"Não vejo chance de sucesso em nada",Gorse
+95,"Sou muito elétrica e agitada",Impatiens
+96,"Esqueço de mim para cuidar dos outros",Centaury
+97,"Faço piada dos meus problemas",Agrimony
+98,"Me sinto abandonada se não me ligam",Chicory
+99,"Fico revoltado com quem não entende minha visão",Vervain
+100,"Minha mente é uma gangorra de decisões",Scleranthus
+101,"Tenho receio de perder o controle financeiro",Mimulus
+102,"Sinto uma ansiedade que não passa",Aspen
+103,"Tenho pavor de notícias ruins repentinas",Rock Rose
+104,"Acredito que meu destino é sofrer",Gorse
+105,"Fico estressado no trânsito parado",Impatiens
+106,"Não tenho coragem de pedir aumento",Centaury
+107,"Sorrio mesmo querendo chorar",Agrimony
+108,"Cuido de todos e esqueço de mim, quero gratidão",Chicory
+109,"Não descanso enquanto não convenço todos",Vervain
+110,"Fico balançando entre duas escolhas simples",Scleranthus
+111,"Tenho medo de tempestades e raios",Mimulus
+112,"Sinto um medo inexplicável ao acordar",Aspen
+113,"Tive um ataque de pânico no mercado",Rock Rose
+114,"Nada mais me dá esperança de melhora",Gorse
+115,"Odeio quando o computador fica lento",Impatiens
+116,"Faço tudo o que minha mãe manda, mesmo adulto",Centaury
+117,"Busco diversão para esquecer as mágoas",Agrimony
+118,"Sinto ciúmes excessivos dos meus amigos",Chicory
+119,"Sou fanático por política e justiça",Vervain
+120,"Não sei se vou na festa ou fico em casa",Scleranthus
+121,"Tenho medo de dentista e dor",Mimulus
+122,"Sinto que estou sendo observado mas não tem ninguém",Aspen
+123,"Fiquei sem ar de tanto medo",Rock Rose
+124,"Me conformei com a minha infelicidade",Gorse
+125,"Não tenho paciência para explicações longas",Impatiens
+126,"Sou capacho do meu chefe",Centaury
+127,"Não gosto de preocupar os outros com meus problemas",Agrimony
+128,"Faço chantagem se não fazem o que quero",Chicory
+129,"Fico tenso tentando mudar a opinião dos outros",Vervain
+130,"Mudo de ideia a cada 5 minutos",Scleranthus
+131,"Tenho medo de ladrão entrar em casa",Mimulus
+132,"Sinto um pressentimento de morte",Aspen
+133,"Meus pesadelos são aterrorizantes",Rock Rose
+134,"Não acredito em mais nenhum tratamento",Gorse
+135,"Fico batendo os dedos na mesa de impaciência",Impatiens
+136,"Não consigo impor limites nos meus filhos",Centaury
+137,"Estou sempre brincando para disfarçar a tensão",Agrimony
+138,"Me sinto rejeitado se não me dão atenção",Chicory
+139,"Sou intenso demais em tudo que defendo",Vervain
+140,"Fico paralisado na hora de escolher o almoço",Scleranthus
+141,"Tenho medo de cobras e bichos",Mimulus
+142,"Sinto um medo súbito sem razão aparente",Aspen
+143,"Tive sensação de morte iminente",Rock Rose
+144,"Estou entregue, não luto mais",Gorse
+145,"Odeio gente que fala devagar",Impatiens
+146,"Faço favores mesmo sem querer",Centaury
+147,"Evito ficar sozinho para não pensar",Agrimony
+148,"Corrijo as pessoas porque quero o bem delas",Chicory
+149,"Não consigo relaxar, minha mente não para",Vervain
+150,"Fico pesando prós e contras eternamente",Scleranthus
+151,"Tenho medo de críticas e julgamentos",Mimulus
+152,"Sinto arrepios sem estar frio",Aspen
+153,"Entrei em pânico ao ver o acidente",Rock Rose
+154,"Acho que nasci com má sorte",Gorse
+155,"Me irrito com a lentidão do sistema",Impatiens
+156,"Sou muito submisso no relacionamento",Centaury
+157,"Finjo alegria em velórios e momentos tristes",Agrimony
+158,"Me magoo fácil se não me agradecem",Chicory
+159,"Luto contra injustiças o tempo todo",Vervain
+160,"Não sei se compro o azul ou o vermelho",Scleranthus
+161,"Tenho medo de ficar sozinho na velhice",Mimulus
+162,"Sinto medo de algo sobrenatural",Aspen
+163,"Fiquei branco de susto e terror",Rock Rose
+164,"Não vejo luz no fim do túnel",Gorse
+165,"Quero as coisas para ontem",Impatiens
+166,"Deixo os outros montarem em cima de mim",Centaury
+167,"Sou o palhaço da turma, mas sou triste",Agrimony
+168,"Gosto de ter controle sobre meus entes queridos",Chicory
+169,"Sou muito entusiasmado e canso os outros",Vervain
+170,"Minha indecisão me faz perder oportunidades",Scleranthus
+171,"Tenho medo de altura e cair",Mimulus
+172,"Sinto que algo ruim ronda minha casa",Aspen
+173,"Tive um ataque de terror no avião",Rock Rose
+174,"Já tentei de tudo e nada funciona",Gorse
+175,"Não aguento esperar o microondas apitar",Impatiens
+176,"Não sei defender meus interesses",Centaury
+177,"Busco paz a qualquer preço, evito brigas",Agrimony
+178,"Faço tudo por amor, mas cobro depois",Chicory
+179,"Sou um cruzado por causas nobres",Vervain
+180,"Fico tonto de tanto oscilar de opinião",Scleranthus
+181,"Tenho medo de sangue e ferimentos",Mimulus
+182,"Sinto medo do desconhecido",Aspen
+183,"O pânico me fez desmaiar",Rock Rose
+184,"Estou condenado ao fracasso",Gorse
+185,"Fico nervoso em filas de banco",Impatiens
+186,"Sou um capacho emocional",Centaury
+187,"Uso álcool para relaxar e socializar",Agrimony
+188,"Sou uma mãe galinha superprotetora",Chicory
+189,"Não durmo pensando em como mudar o mundo",Vervain
+190,"Não sei se caso ou compro uma bicicleta",Scleranthus
+191,"Tenho medo de palco e plateia",Mimulus
+192,"Sinto uma apreensão constante",Aspen
+193,"O terror tomou conta de mim no assalto",Rock Rose
+194,"Não tenho forças para tentar de novo",Gorse
+195,"Atropelo as palavras de tão rápido que falo",Impatiens
+196,"Faço a vontade dos outros para ser aceito",Centaury
+197,"Detesto discutir, prefiro ceder",Agrimony
+198,"Sinto que ninguém me ama como eu amo",Chicory
+199,"Sou tenso e rígido com meus princípios",Vervain
+200,"Fico dividido entre razão e emoção",Scleranthus
+201,"Tenho medo de câncer e doenças graves",Mimulus
+202,"Sinto medo de dormir no escuro",Aspen
+203,"Fiquei gelado de pavor",Rock Rose
+204,"Aceitei meu destino cruel",Gorse
+205,"Odeio quem enrola para explicar algo",Impatiens
+206,"Sou muito fraco para dizer não",Centaury
+207,"Estou sempre rindo, mesmo na pior",Agrimony
+208,"Me sinto um mártir da família",Chicory
+209,"Tento converter todos à minha religião/ideia",Vervain
+210,"Minha cabeça é um pêndulo de indecisão",Scleranthus
+211,"Tenho medo de baratas voadoras",Mimulus
+212,"Sinto uma presença maligna às vezes",Aspen
+213,"O terror me paralisou as pernas",Rock Rose
+214,"Não acredito que vou sarar",Gorse
+215,"Sou elétrico, não paro quieto",Impatiens
+216,"Me anulo para servir os outros",Centaury
+217,"Odeio que me vejam chorar",Agrimony
+218,"Manipulo com culpa para conseguir atenção",Chicory
+219,"Sou exagerado na defesa das minhas ideias",Vervain
+220,"Troco de roupa mil vezes antes de sair",Scleranthus
+221,"Tenho medo de dirigir em estradas",Mimulus
+222,"Sinto um medo abstrato e sem nome",Aspen
+223,"Entrei em pânico quando a luz acabou",Rock Rose
+224,"Já me resignei com a solidão",Gorse
+225,"Tomo o trabalho dos outros para ir rápido",Impatiens
+226,"Sou explorado no trabalho e não reclamo",Centaury
+227,"Busco harmonia fingindo que concordo",Agrimony
+228,"Fico doente se meus filhos se afastam",Chicory
+229,"Sou perfeccionista e quero que todos sejam",Vervain
+230,"Não sei se quero doce ou salgado",Scleranthus
+231,"Tenho medo da reação do meu chefe",Mimulus
+232,"Sinto que algo terrível vai acontecer hoje",Aspen
+233,"Tive pesadelos horríveis e acordei suando",Rock Rose
+234,"Não há saída para o meu problema",Gorse
+235,"Fico ansioso quando o trânsito para",Impatiens
+236,"Faço tudo para não desagradar",Centaury
+237,"Minha alegria esconde muita dor",Agrimony
+238,"Lembro de tudo que fiz por você, ingrato",Chicory
+239,"Sou incansável nas minhas lutas",Vervain
+240,"Fico mudando de canal sem parar",Scleranthus
+241,"Tenho medo de falhar na prova",Mimulus
+242,"Sinto uma sombra me seguindo",Aspen
+243,"O pânico me fez perder a voz",Rock Rose
+244,"Estou descrente da vida",Gorse
+245,"Não tenho paciência com gente burra",Impatiens
+246,"Sou um empregado da vontade alheia",Centaury
+247,"Evito conflitos a todo custo",Agrimony
+248,"Me faço de vítima para ter carinho",Chicory
+249,"Me estresso tentando convencer os ignorantes",Vervain
+250,"Não sei qual caminho pegar no GPS",Scleranthus
+251,"Tenho medo de nadar no mar fundo",Mimulus
+252,"Sinto medo de presságios",Aspen
+253,"Fiquei petrificado ao ver o fogo",Rock Rose
+254,"Acho que nunca vou ser feliz",Gorse
+255,"Fico irritado com a lentidão do garçom",Impatiens
+256,"Não tenho personalidade própria",Centaury
+257,"Disfarço minha ansiedade com piadas",Agrimony
+258,"Preciso que precisem de mim",Chicory
+259,"Sou muito tenso, não relaxo nunca",Vervain
+260,"Fico indeciso até para escolher sorvete",Scleranthus
+261,"Tenho medo de ratos e camundongos",Mimulus
+262,"Sinto medo de energias negativas",Aspen
+263,"O terror tomou conta do meu corpo",Rock Rose
+264,"Já aceitei que vou sofrer sempre",Gorse
+265,"Odeio esperar o elevador",Impatiens
+266,"Sou muito servil e obediente",Centaury
+267,"Finjo que não tenho problemas",Agrimony
+268,"Choro para conseguir o que quero",Chicory
+269,"Sou muito enfático ao falar",Vervain
+270,"Uma hora estou feliz, outra triste, sem motivo",Scleranthus
+271,"Tenho medo de ser demitido",Mimulus
+272,"Sinto medo de vultos na janela",Aspen
+273,"Tive um ataque de nervos de tanto susto",Rock Rose
+274,"Desisti de lutar contra a doença",Gorse
+275,"Completo as frases dos gagos de impaciência",Impatiens
+276,"Não consigo negar dinheiro emprestado",Centaury
+277,"Sou a pessoa mais feliz do mundo (mentira)",Agrimony
+278,"Sou possessiva com meu namorado",Chicory
+279,"Quero salvar o mundo sozinho",Vervain
+280,"Não sei se estudo ou trabalho",Scleranthus
+281,"Tenho medo de tempestade e trovão",Mimulus
+282,"Sinto medo de pesadelos recorrentes",Aspen
+283,"Fiquei cego de pânico momentâneo",Rock Rose
+284,"Não acredito em milagres para mim",Gorse
+285,"Ando na frente de todos na calçada",Impatiens
+286,"Faço o trabalho sujo que ninguém quer",Centaury
+287,"Busco companhia para não encarar meus pensamentos",Agrimony
+288,"Sinto ciúmes dos meus amigos com outros",Chicory
+289,"Sou fanático por dieta e saúde",Vervain
+290,"Fico em dúvida entre dois amores",Scleranthus
+291,"Tenho medo de multidões",Mimulus
+292,"Sinto uma inquietação na alma",Aspen
+293,"O terror me fez tremer sem parar",Rock Rose
+294,"Estou sem esperança no futuro",Gorse
+295,"Falo depressa e atropelo tudo",Impatiens
+296,"Sou capacho da família",Centaury
+297,"Sou otimista demais para esconder a tristeza",Agrimony
+298,"Cobro presença e telefonemas",Chicory
+299,"Sou um missionário das minhas causas",Vervain
+300,"Não consigo me decidir sobre nada",Scleranthus
+301,"Tenho medo de aranhas peludas",Mimulus
+302,"Sinto medo do silêncio absoluto",Aspen
+303,"Tive pânico de morrer engasgado",Rock Rose
+304,"Já tentei tudo, não tem jeito",Gorse
+305,"Fico nervoso em filas de supermercado",Impatiens
+306,"Não sei impor minha vontade",Centaury
+307,"Evito assuntos tristes e polêmicos",Agrimony
+308,"Me sinto dona das pessoas que amo",Chicory
+309,"Sou tenso e não consigo descansar",Vervain
+310,"Fico oscilando entre sim e não",Scleranthus
+311,"Tenho medo de falar com estranhos",Mimulus
+312,"Sinto medo de espíritos obsessores",Aspen
+313,"Fiquei paralisado no meio da rua de medo",Rock Rose
+314,"Estou resignado com a pobreza",Gorse
+315,"Sou impaciente com crianças",Impatiens
+316,"Faço tudo para não ser rejeitado",Centaury
+317,"Estou sempre rindo para não chorar",Agrimony
+318,"Faço chantagem se meu filho sai de casa",Chicory
+319,"Tento convencer todos a serem veganos/religiosos",Vervain
+320,"Não sei se compro o carro ou a moto",Scleranthus
+321,"Tenho medo de errar no trabalho",Mimulus
+322,"Sinto medo de pressentimentos ruins",Aspen
+323,"O pânico me fez suar frio",Rock Rose
+324,"Não tenho fé que vou melhorar",Gorse
+325,"Quero resolver tudo agora, já",Impatiens
+326,"Sou muito passivo e aceito tudo",Centaury
+327,"Odeio brigas, saio de perto",Agrimony
+328,"Organizo a festa e exijo elogios",Chicory
+329,"Sou muito rígido com regras",Vervain
+330,"Fico balançando a perna de indecisão",Scleranthus
+331,"Tenho medo de injeção e sangue",Mimulus
+332,"Sinto medo de dormir sozinho",Aspen
+333,"Acordei berrando de pavor",Rock Rose
+334,"Estou conformado com o fracasso",Gorse
+335,"Fico irritado com quem anda devagar na frente",Impatiens
+336,"Não tenho voz ativa em casa",Centaury
+337,"Sou o animador de festas triste",Agrimony
+338,"Sinto que dou muito e recebo pouco",Chicory
+339,"Luto contra o sistema incansavelmente",Vervain
+340,"Não sei se viajo ou guardo dinheiro",Scleranthus
+341,"Tenho medo de cair de moto",Mimulus
+342,"Sinto medo de sensações estranhas",Aspen
+343,"O terror me deixou mudo",Rock Rose
+344,"Não adianta ter esperança",Gorse
+345,"Sou acelerado e ansioso",Impatiens
+346,"Faço o que mandam sem questionar",Centaury
+347,"Finjo que não me importo com problemas",Agrimony
+348,"Sou possessiva com meus amigos",Chicory
+349,"Sou fanático por justiça social",Vervain
+350,"Fico indeciso entre duas carreiras",Scleranthus
+351,"Tenho medo de ficar doente",Mimulus
+352,"Sinto medo do desconhecido e invisível",Aspen
+353,"Tive um ataque de pânico na ponte",Rock Rose
+354,"Acredito que meu caso é perdido",Gorse
+355,"Não suporto reuniões longas",Impatiens
+356,"Sou bonzinho demais e se aproveitam",Centaury
+357,"Disfarço minha dor com humor",Agrimony
+358,"Fico magoada se não me visitam",Chicory
+359,"Sou intenso e quero mudar os outros",Vervain
+360,"Oscilo entre otimismo e pessimismo",Scleranthus
+361,"Tenho medo de ser assaltado",Mimulus
+362,"Sinto medo de assombrações",Aspen
+363,"Fiquei travado de medo no exame",Rock Rose
+364,"Estou sem esperanças de cura",Gorse
+365,"Fico nervoso com internet lenta",Impatiens
+366,"Não sei dizer não para vendedor",Centaury
+367,"Sou pacífico, evito qualquer atrito",Agrimony
+368,"Corrijo a postura de todos por amor",Chicory
+369,"Sou incansável na defesa dos meus ideais",Vervain
+370,"Não sei se vou de táxi ou ônibus",Scleranthus
+371,"Tenho medo de altura e escada",Mimulus
+372,"Sinto medo de algo que não vejo",Aspen
+373,"O pânico me fez correr sem direção",Rock Rose
+374,"Aceitei que vou ser infeliz",Gorse
+375,"Como correndo para voltar logo",Impatiens
+376,"Sou submisso aos meus pais",Centaury
+377,"Escondo minhas lágrimas",Agrimony
+378,"Sinto ciúmes do meu marido",Chicory
+379,"Quero convencer todos que estou certo",Vervain
+380,"Fico em dúvida entre dois pratos no menu",Scleranthus
+381,"Tenho medo de dentista e motorzinho",Mimulus
+382,"Sinto medo de energias ruins",Aspen
+383,"O terror noturno não me deixa dormir",Rock Rose
+384,"Desisti de tentar emagrecer",Gorse
+385,"Não tenho paciência para ensinar",Impatiens
+386,"Faço tudo para não magoar os outros",Centaury
+387,"Busco festas para não ficar triste",Agrimony
+388,"Sou controladora com a família",Chicory
+389,"Sou muito entusiasmado com meu trabalho",Vervain
+390,"Não sei se corto o cabelo ou não",Scleranthus
+391,"Tenho medo de cachorros grandes",Mimulus
+392,"Sinto medo de presságios funestos",Aspen
+393,"Fiquei paralisado de horror",Rock Rose
+394,"Acho que não tem mais jeito para mim",Gorse
+395,"Me irrito com quem fala devagar",Impatiens
+396,"Sou um capacho no trabalho",Centaury
+397,"Não gosto de falar de coisas tristes",Agrimony
+398,"Me sinto ofendida se não aceitam minha ajuda",Chicory
+399,"Luto por causas perdidas com fervor",Vervain
+400,"Fico indeciso entre ir e ficar",Scleranthus
+401,"Tenho medo de ficar sem dinheiro",Mimulus
+402,"Sinto medo de vultos no escuro",Aspen
+403,"O pânico me fez perder o controle",Rock Rose
+404,"Não tenho esperança de dias melhores",Gorse
+405,"Sou apressado e atropelo os outros",Impatiens
+406,"Não consigo negar ajuda a ninguém",Centaury
+407,"Sorrio para esconder o choro",Agrimony
+408,"Gosto de ter todos dependendo de mim",Chicory
+409,"Sou tenso por excesso de zelo",Vervain
+410,"Não sei se gosto ou não gosto",Scleranthus
+411,"Tenho medo de escuro e fantasmas",Mimulus
+412,"Sinto medo de algo ruim acontecer",Aspen
+413,"Tive um ataque de pânico no show",Rock Rose
+414,"Já me acostumei com o sofrimento",Gorse
+415,"Fico nervoso esperando resposta",Impatiens
+416,"Faço o que não quero para agradar",Centaury
+417,"Fujo de discussões para ter paz",Agrimony
+418,"Sou carente e possessiva",Chicory
+419,"Sou fanático por ordem e justiça",Vervain
+420,"Fico oscilando entre duas opções de viagem",Scleranthus
+421,"Tenho medo de avião e turbulência",Mimulus
+422,"Sinto um medo inexplicável de noite",Aspen
+423,"Fiquei cego de medo no assalto",Rock Rose
+424,"Não acredito que as coisas mudem",Gorse
+425,"Sou impaciente com idosos",Impatiens
+426,"Sou facilmente manipulado",Centaury
+427,"Finjo que está tudo bem no casamento",Agrimony
+428,"Me sinto desvalorizada pela família",Chicory
+429,"Quero mudar a cabeça das pessoas",Vervain
+430,"Não sei se compro ou alugo",Scleranthus
+431,"Tenho medo de injeção e hospital",Mimulus
+432,"Sinto medo de sensações corporais",Aspen
+433,"O terror me fez gritar",Rock Rose
+434,"Estou sem fé na vida",Gorse
+435,"Fico irritado com a burocracia",Impatiens
+436,"Sou servil e não reclamo",Centaury
+437,"Busco agito para não pensar",Agrimony
+438,"Manipulo com doenças para ter atenção",Chicory
+439,"Sou intenso na defesa dos animais",Vervain
+440,"Fico indeciso entre dois caminhos",Scleranthus
+441,"Tenho medo de aranha e barata",Mimulus
+442,"Sinto medo de pesadelos",Aspen
+443,"Tive pânico de altura na escada",Rock Rose
+444,"Acho que meu destino é sofrer",Gorse
+445,"Sou rápido e quero que todos sejam",Impatiens
+446,"Faço favores e me arrependo",Centaury
+447,"Sou a alegria da casa, mas sofro",Agrimony
+448,"Cuido de todos e ninguém cuida de mim",Chicory
+449,"Sou insistente e chato com minhas ideias",Vervain
+450,"Não sei se caso ou compro um terreno",Scleranthus
+451,"Tenho medo de perder quem amo",Mimulus
+452,"Sinto medo de espíritos",Aspen
+453,"Fiquei gelado de terror",Rock Rose
+454,"Não vejo solução para meus problemas",Gorse
+455,"Odeio esperar em consultório",Impatiens
+456,"Sou muito bonzinho e bobo",Centaury
+457,"Disfarço a tristeza com bebida",Agrimony
+458,"Sou ciumenta com meus filhos",Chicory
+459,"Sou fervoroso nas minhas crenças",Vervain
+460,"Fico mudando de opinião toda hora",Scleranthus
+461,"Tenho medo de elevador quebrar",Mimulus
+462,"Sinto medo de pressentimentos",Aspen
+463,"O pânico me paralisou no trânsito",Rock Rose
+464,"Estou resignado com a dor",Gorse
+465,"Sou ansioso e quero tudo rápido",Impatiens
+466,"Não sei dizer não para o chefe",Centaury
+467,"Evito brigas fingindo concordar",Agrimony
+468,"Me faço de vítima para ter carinho",Chicory
+469,"Sou incansável no trabalho",Vervain
+470,"Fico indeciso entre duas cores",Scleranthus
+471,"Tenho medo de trovão e raio",Mimulus
+472,"Sinto medo do escuro do quarto",Aspen
+473,"Tive um ataque de terror noturno",Rock Rose
+474,"Não tenho esperança de cura",Gorse
+475,"Fico nervoso com gente lenta",Impatiens
+476,"Faço tudo para não ter conflito",Centaury
+477,"Estou sempre sorrindo, é minha máscara",Agrimony
+478,"Sou possessiva com minhas coisas",Chicory
+479,"Quero convencer o mundo da minha verdade",Vervain
+480,"Oscilo entre sim e não rapidamente",Scleranthus
+481,"Tenho medo de doença contagiosa",Mimulus
+482,"Sinto medo de algo invisível",Aspen
+483,"Fiquei petrificado no susto",Rock Rose
+484,"Já desisti de ser feliz",Gorse
+485,"Não tenho paciência para esperar",Impatiens
+486,"Sou submisso e aceito ordens",Centaury
+487,"Não gosto de mostrar fraqueza",Agrimony
+488,"Cobro amor e gratidão",Chicory
+489,"Sou tenso e agitado por ideais",Vervain
+490,"Não sei se vou ou fico",Scleranthus
+491,"Tenho medo de cobra e escorpião",Mimulus
+492,"Sinto medo de sensações ruins",Aspen
+493,"O terror me fez tremer as pernas",Rock Rose
+494,"Estou sem ânimo para lutar",Gorse
+495,"Sou apressado e atropelo a fala",Impatiens
+496,"Não consigo negar nada a ninguém",Centaury
+497,"Fujo de problemas com diversão",Agrimony
+498,"Me sinto abandonada fácil",Chicory
+499,"Sou fanático e exagerado",Vervain
+500,"Fico indeciso o dia todo",Scleranthus
+501,"Tenho medo de andar de avião à noite",Mimulus
+502,"Sinto um medo inexplicável de manhã",Aspen
+503,"Tive terror ao ver o acidente",Rock Rose
+504,"Não tenho mais fé na vida",Gorse
+505,"Fico irritado em filas de banco",Impatiens
+506,"Sou capacho dos meus amigos",Centaury
+507,"Sorrio para não chorar na frente dos outros",Agrimony
+508,"Faço tudo pelos filhos e cobro",Chicory
+509,"Tento converter todos ao meu estilo de vida",Vervain
+510,"Não sei decidir entre praia e campo",Scleranthus
+511,"Tenho medo de altura e varanda",Mimulus
+512,"Sinto um medo vago no peito",Aspen
+513,"Fiquei paralisado de pânico no elevador",Rock Rose
+514,"Acho que não tem mais jeito",Gorse
+515,"Odeio esperar o sinal abrir",Impatiens
+516,"Não consigo dizer não para a mãe",Centaury
+517,"Bebo para relaxar e esquecer",Agrimony
+518,"Sou superprotetora e chata",Chicory
+519,"Fico indignado com a política",Vervain
+520,"Uma hora quero sair, outra ficar",Scleranthus
+521,"Tenho medo de ficar pobre na velhice",Mimulus
+522,"Acordo com medo sem saber o motivo",Aspen
+523,"Sinto que vou desmaiar de pânico",Rock Rose
+524,"Estou conformado com meu destino",Gorse
+525,"Fico nervoso com internet discada",Impatiens
+526,"Sou muito bonzinho no trabalho",Centaury
+527,"Odeio clima pesado em casa",Agrimony
+528,"Só quero que me amem como eu amo",Chicory
+529,"Sou fanático pelo meu time/partido",Vervain
+530,"É difícil escolher o que vestir",Scleranthus
+531,"Tenho medo de aranha caranguejeira",Mimulus
+532,"Sinto arrepios de medo do nada",Aspen
+533,"Acordo gritando com pesadelos",Rock Rose
+534,"Perdi a esperança no tratamento",Gorse
+535,"Quero tudo resolvido para ontem",Impatiens
+536,"Deixo de fazer minhas coisas pelos outros",Centaury
+537,"Sou animado mas triste por dentro",Agrimony
+538,"Organizo a vida dos outros sem pedir",Chicory
+539,"Não desligo, estou sempre militando",Vervain
+540,"Fico em dúvida entre dois filmes",Scleranthus
+541,"Tenho medo de perder o emprego",Mimulus
+542,"Sinto que algo ruim vai acontecer comigo",Aspen
+543,"Fiquei mudo de tanto medo",Rock Rose
+544,"Estou resignado e apático",Gorse
+545,"Fico batendo o pé de pressa",Impatiens
+546,"Sou dominado pelo marido/esposa",Centaury
+547,"Uso calmantes para fingir estar bem",Agrimony
+548,"Me sinto magoada se não seguem o que digo",Chicory
+549,"Fico exausto de tanto lutar",Vervain
+550,"Minha mente oscila muito",Scleranthus
+551,"Tenho medo de falar em público",Mimulus
+552,"Tenho medo de fantasmas no quarto",Aspen
+553,"Entro em choque se vejo sangue",Rock Rose
+554,"Não adianta tentar, vai dar errado",Gorse
+555,"Não suporto gente devagar",Impatiens
+556,"Acabo cedendo para não brigar",Centaury
+557,"Minto que estou feliz",Agrimony
+558,"Faço chantagem emocional com os filhos",Chicory
+559,"Sou dono da razão e imponho ideias",Vervain
+560,"Nunca sei o que escolher no cardápio",Scleranthus
+561,"Tenho medo da morte",Mimulus
+562,"Sinto medo do escuro e vultos",Aspen
+563,"Sinto um pânico gelado",Rock Rose
+564,"Estou condenado a ser infeliz",Gorse
+565,"Como rápido demais",Impatiens
+566,"Sou um mártir e me sacrifico",Centaury
+567,"Busco festas para fugir da depressão",Agrimony
+568,"Cobro atenção e carinho",Chicory
+569,"Estou sempre tenso e alerta",Vervain
+570,"Oscilo entre euforia e tristeza",Scleranthus
+571,"Tenho medo de lugares fechados",Mimulus
+572,"Sinto vibração ruim em certos lugares",Aspen
+573,"Meus cabelos arrepiam de terror",Rock Rose
+574,"Aceitei minha doença como fardo",Gorse
+575,"Termino a frase dos outros",Impatiens
+576,"Sempre cedo minha vez",Centaury
+577,"Sou o pacificador da família",Agrimony
+578,"Manipulo para ter companhia",Chicory
+579,"Falo alto e gesticulo muito",Vervain
+580,"Fico paralisado na dúvida",Scleranthus
+581,"Tenho medo de agulha de injeção",Mimulus
+582,"Tenho pesadelos que me assustam",Aspen
+583,"Fiquei petrificado no assalto",Rock Rose
+584,"Não há nada a fazer",Gorse
+585,"Ando rápido na rua",Impatiens
+586,"Faço o trabalho dos outros",Centaury
+587,"Roo unhas de ansiedade escondida",Agrimony
+588,"Gosto de ter todos sob minhas asas",Chicory
+589,"Sou insistente e chato",Vervain
+590,"Perco chances por indecisão",Scleranthus
+591,"Tenho medo de cachorro bravo",Mimulus
+592,"Sinto medo de assombração",Aspen
+593,"Tive vontade de sair correndo de pânico",Rock Rose
+594,"Não vejo chance de melhora",Gorse
+595,"Sou elétrica e não paro",Impatiens
+596,"Esqueço de mim pelos outros",Centaury
+597,"Faço piada da minha desgraça",Agrimony
+598,"Me sinto abandonada se não ligam",Chicory
+599,"Fico revoltado com injustiças",Vervain
+600,"Minha mente é uma gangorra",Scleranthus
+601,"Tenho medo de escuro total",Mimulus
+602,"Sinto uma angústia sem nome",Aspen
+603,"Tenho pânico de avião caindo",Rock Rose
+604,"Perdi as esperanças de ser feliz",Gorse
+605,"Fico irritado com fila de banco",Impatiens
+606,"Não consigo negar favores a amigos",Centaury
+607,"Estou sempre rindo mas estou triste",Agrimony
+608,"Faço tudo e ninguém reconhece",Chicory
+609,"Preciso convencer as pessoas",Vervain
+610,"Fico oscilando entre sim e não",Scleranthus
+611,"Tenho pavor de altura",Mimulus
+612,"Sinto um medo vago e ruim",Aspen
+613,"Fiquei paralisado de medo",Rock Rose
+614,"Desisti de tentar ser feliz",Gorse
+615,"Odeio esperar, sou ansioso",Impatiens
+616,"Sou capacho de todos",Centaury
+617,"Bebo para esquecer a tristeza",Agrimony
+618,"Ninguém cuida de mim direito",Chicory
+619,"Luto contra tudo e todos",Vervain
+620,"Hoje quero, amanhã não quero",Scleranthus
+621,"Tenho medo de ir ao médico",Mimulus
+622,"Acordo com medo e tremores",Aspen
+623,"Sinto que vou morrer de medo",Rock Rose
+624,"Acho que nasci para sofrer",Gorse
+625,"Fico nervoso com computador lento",Impatiens
+626,"Não sei negar nada",Centaury
+627,"Odeio brigas, finjo concordar",Agrimony
+628,"Quero meus filhos sempre perto",Chicory
+629,"Sou fanático por minhas ideias",Vervain
+630,"É difícil escolher roupa",Scleranthus
+631,"Tenho medo de insetos",Mimulus
+632,"Sinto arrepios no quarto",Aspen
+633,"Acordo gritando à noite",Rock Rose
+634,"Perdi a fé na vida",Gorse
+635,"Quero tudo rápido",Impatiens
+636,"Deixo de fazer o que quero",Centaury
+637,"Sou alegre por fora, triste por dentro",Agrimony
+638,"Organizo tudo e ninguém agradece",Chicory
+639,"Não consigo desligar a mente",Vervain
+640,"Fico em cima do muro",Scleranthus
+641,"Tenho medo da pobreza",Mimulus
+642,"Sinto que algo ruim vem aí",Aspen
+643,"Fiquei cego de medo",Rock Rose
+644,"Estou resignado com a dor",Gorse
+645,"Fico batendo o pé de nervoso",Impatiens
+646,"Sou dominado facilmente",Centaury
+647,"Uso drogas para fugir",Agrimony
+648,"Me sinto magoada se não ouvem",Chicory
+649,"Fico exausto de lutar",Vervain
+650,"Minha indecisão me cansa",Scleranthus
+651,"Tenho medo de falar e travar",Mimulus
+652,"Tenho medo de fantasmas",Aspen
+653,"Entro em choque fácil",Rock Rose
+654,"Não adianta mais tentar",Gorse
+655,"Não suporto gente lerdar",Impatiens
+656,"Faço o que querem para não brigar",Centaury
+657,"Minto que estou ótimo",Agrimony
+658,"Faço chantagem emocional",Chicory
+659,"Sou dono da verdade",Vervain
+660,"Nunca sei o que escolher",Scleranthus
+661,"Tenho medo de morrer cedo",Mimulus
+662,"Sinto medo do silêncio",Aspen
+663,"Sinto um pânico na espinha",Rock Rose
+664,"Estou condenado ao sofrimento",Gorse
+665,"Como rápido demais, engulo",Impatiens
+666,"Sou um mártir voluntário",Centaury
+667,"Busco festas para não pensar",Agrimony
+668,"Cobro amor demais",Chicory
+669,"Estou sempre tenso e pilhado",Vervain
+670,"Oscilo de humor rápido",Scleranthus
+671,"Tenho medo de elevador",Mimulus
+672,"Sinto vibração ruim aqui",Aspen
+673,"Meus cabelos ficam em pé",Rock Rose
+674,"Aceitei minha doença",Gorse
+675,"Termino as frases dos outros",Impatiens
+676,"Sempre cedo meu lugar",Centaury
+677,"Sou o pacificador do grupo",Agrimony
+678,"Manipulo as pessoas",Chicory
+679,"Falo com muita força",Vervain
+680,"Fico paralisado na escolha",Scleranthus
+681,"Tenho medo de agulha",Mimulus
+682,"Tenho pesadelos ruins",Aspen
+683,"Fiquei petrificado",Rock Rose
+684,"Não há mais nada a fazer",Gorse
+685,"Ando sempre correndo",Impatiens
+686,"Faço tudo pelos colegas",Centaury
+687,"Roo as unhas de nervoso",Agrimony
+688,"Quero todos sob minhas asas",Chicory
+689,"Sou insistente demais",Vervain
+690,"Perco chances por dúvida",Scleranthus
+691,"Tenho medo de cachorro",Mimulus
+692,"Sinto medo de vultos",Aspen
+693,"Tive vontade de fugir",Rock Rose
+694,"Não vejo chance de sucesso",Gorse
+695,"Sou muito agitada",Impatiens
+696,"Esqueço de mim mesma",Centaury
+697,"Faço piada de tudo",Agrimony
+698,"Me sinto abandonada",Chicory
+699,"Fico revoltado com tudo",Vervain
+700,"Minha mente é uma gangorra",Scleranthus
+701,"Tenho receio de dívidas",Mimulus
+702,"Sinto ansiedade sem motivo",Aspen
+703,"Tenho pavor de más notícias",Rock Rose
+704,"Acredito que vou sofrer",Gorse
+705,"Fico estressado no trânsito",Impatiens
+706,"Não tenho coragem de negar",Centaury
+707,"Sorrio querendo chorar",Agrimony
+708,"Cuido e quero gratidão",Chicory
+709,"Não descanso nunca",Vervain
+710,"Fico balançando na dúvida",Scleranthus
+711,"Tenho medo de raios",Mimulus
+712,"Sinto medo ao acordar",Aspen
+713,"Tive ataque de pânico",Rock Rose
+714,"Nada me dá esperança",Gorse
+715,"Odeio computador lento",Impatiens
+716,"Faço tudo que mandam",Centaury
+717,"Busco diversão e álcool",Agrimony
+718,"Sinto ciúmes dos amigos",Chicory
+719,"Sou fanático por justiça",Vervain
+720,"Não sei se vou ou fico",Scleranthus
+721,"Tenho medo de dor",Mimulus
+722,"Sinto que sou observado",Aspen
+723,"Fiquei sem ar de medo",Rock Rose
+724,"Me conformei com a dor",Gorse
+725,"Não tenho paciência",Impatiens
+726,"Sou capacho do chefe",Centaury
+727,"Não gosto de preocupar",Agrimony
+728,"Faço chantagem com choro",Chicory
+729,"Fico tenso tentando mudar",Vervain
+730,"Mudo de ideia sempre",Scleranthus
+731,"Tenho medo de ladrão",Mimulus
+732,"Sinto pressentimento ruim",Aspen
+733,"Meus pesadelos assustam",Rock Rose
+734,"Não acredito em cura",Gorse
+735,"Fico batendo dedos",Impatiens
+736,"Não imponho limites",Centaury
+737,"Estou sempre brincando",Agrimony
+738,"Me sinto rejeitado",Chicory
+739,"Sou intenso demais",Vervain
+740,"Fico paralisado",Scleranthus
+741,"Tenho medo de cobra",Mimulus
+742,"Sinto medo súbito",Aspen
+743,"Tive sensação de morte",Rock Rose
+744,"Estou entregue",Gorse
+745,"Odeio gente devagar",Impatiens
+746,"Faço favores demais",Centaury
+747,"Evito ficar só",Agrimony
+748,"Corrijo as pessoas",Chicory
+749,"Não consigo relaxar",Vervain
+750,"Fico pesando tudo",Scleranthus
+751,"Tenho medo de críticas",Mimulus
+752,"Sinto arrepios",Aspen
+753,"Entrei em pânico",Rock Rose
+754,"Nasci com má sorte",Gorse
+755,"Me irrito com lentidão",Impatiens
+756,"Sou muito submisso",Centaury
+757,"Finjo alegria",Agrimony
+758,"Me magoo fácil",Chicory
+759,"Luto o tempo todo",Vervain
+760,"Não sei escolher",Scleranthus
+761,"Tenho medo da velhice",Mimulus
+762,"Sinto medo sobrenatural",Aspen
+763,"Fiquei branco de susto",Rock Rose
+764,"Não vejo luz",Gorse
+765,"Quero para ontem",Impatiens
+766,"Deixo montarem em mim",Centaury
+767,"Sou palhaço triste",Agrimony
+768,"Tenho controle sobre eles",Chicory
+769,"Sou entusiasmado demais",Vervain
+770,"Minha indecisão atrapalha",Scleranthus
+771,"Tenho medo de cair",Mimulus
+772,"Sinto algo ruim aqui",Aspen
+773,"Tive terror no avião",Rock Rose
+774,"Tentei de tudo",Gorse
+775,"Não aguento esperar",Impatiens
+776,"Não defendo interesses",Centaury
+777,"Busco paz sempre",Agrimony
+778,"Faço tudo por amor",Chicory
+779,"Sou um cruzado",Vervain
+780,"Fico tonto de dúvida",Scleranthus
+781,"Tenho medo de sangue",Mimulus
+782,"Sinto medo desconhecido",Aspen
+783,"O pânico desmaiou",Rock Rose
+784,"Estou condenado",Gorse
+785,"Fico nervoso na fila",Impatiens
+786,"Sou capacho emocional",Centaury
+787,"Uso álcool",Agrimony
+788,"Sou mãe galinha",Chicory
+789,"Não durmo pensando",Vervain
+790,"Não sei se caso",Scleranthus
+791,"Tenho medo de palco",Mimulus
+792,"Sinto apreensão",Aspen
+793,"O terror me pegou",Rock Rose
+794,"Não tenho forças",Gorse
+795,"Falo depressa",Impatiens
+796,"Faço a vontade deles",Centaury
+797,"Detesto discutir",Agrimony
+798,"Ninguém me ama",Chicory
+799,"Sou tenso e rígido",Vervain
+800,"Fico dividido",Scleranthus
+801,"Tenho medo de câncer",Mimulus
+802,"Sinto medo de dormir",Aspen
+803,"Fiquei gelado",Rock Rose
+804,"Aceitei meu destino",Gorse
+805,"Odeio quem enrola",Impatiens
+806,"Sou muito fraco",Centaury
+807,"Estou sempre rindo",Agrimony
+808,"Sou um mártir",Chicory
+809,"Tento converter todos",Vervain
+810,"Minha cabeça é pêndulo",Scleranthus
+811,"Tenho medo de barata",Mimulus
+812,"Sinto presença maligna",Aspen
+813,"O terror paralisou",Rock Rose
+814,"Não acredito",Gorse
+815,"Sou elétrico",Impatiens
+816,"Me anulo",Centaury
+817,"Odeio chorar",Agrimony
+818,"Manipulo com culpa",Chicory
+819,"Sou exagerado",Vervain
+820,"Troco de roupa mil vezes",Scleranthus
+821,"Tenho medo de estrada",Mimulus
+822,"Sinto medo abstrato",Aspen
+823,"Entrei em pânico no escuro",Rock Rose
+824,"Me resignei",Gorse
+825,"Tomo o trabalho",Impatiens
+826,"Sou explorado",Centaury
+827,"Busco harmonia",Agrimony
+828,"Fico doente se afastam",Chicory
+829,"Sou perfeccionista",Vervain
+830,"Não sei se quero",Scleranthus
+831,"Tenho medo do chefe",Mimulus
+832,"Sinto algo terrível",Aspen
+833,"Tive pesadelos",Rock Rose
+834,"Não há saída",Gorse
+835,"Fico ansioso",Impatiens
+836,"Faço tudo",Centaury
+837,"Minha alegria esconde",Agrimony
+838,"Lembro o que fiz",Chicory
+839,"Sou incansável",Vervain
+840,"Fico mudando",Scleranthus
+841,"Tenho medo da prova",Mimulus
+842,"Sinto sombra",Aspen
+843,"O pânico tirou a voz",Rock Rose
+844,"Estou descrente",Gorse
+845,"Não tenho paciência",Impatiens
+846,"Sou um empregado",Centaury
+847,"Evito conflitos",Agrimony
+848,"Me faço de vítima",Chicory
+849,"Me estresso",Vervain
+850,"Não sei o caminho",Scleranthus
+851,"Tenho medo de nadar",Mimulus
+852,"Sinto medo de presságio",Aspen
+853,"Fiquei petrificado",Rock Rose
+854,"Nunca vou ser feliz",Gorse
+855,"Fico irritado",Impatiens
+856,"Não tenho personalidade",Centaury
+857,"Disfarço ansiedade",Agrimony
+858,"Preciso que precisem",Chicory
+859,"Sou muito tenso",Vervain
+860,"Fico indeciso",Scleranthus
+861,"Tenho medo de rato",Mimulus
+862,"Sinto medo de energia",Aspen
+863,"O terror tomou conta",Rock Rose
+864,"Já aceitei",Gorse
+865,"Odeio elevador",Impatiens
+866,"Sou muito servil",Centaury
+867,"Finjo que não tenho",Agrimony
+868,"Choro para conseguir",Chicory
+869,"Sou enfático",Vervain
+870,"Estou feliz e triste",Scleranthus
+871,"Tenho medo de demissão",Mimulus
+872,"Sinto medo de vulto",Aspen
+873,"Tive ataque de nervos",Rock Rose
+874,"Desisti de lutar",Gorse
+875,"Completo frases",Impatiens
+876,"Não nego dinheiro",Centaury
+877,"Sou a pessoa mais feliz",Agrimony
+878,"Sou possessiva",Chicory
+879,"Quero salvar o mundo",Vervain
+880,"Não sei se estudo",Scleranthus
+881,"Tenho medo de trovão",Mimulus
+882,"Sinto medo de pesadelo",Aspen
+883,"Fiquei cego de pânico",Rock Rose
+884,"Não acredito em milagre",Gorse
+885,"Ando na frente",Impatiens
+886,"Faço trabalho sujo",Centaury
+887,"Busco companhia",Agrimony
+888,"Sinto ciúmes",Chicory
+889,"Sou fanático",Vervain
+890,"Fico em dúvida",Scleranthus
+891,"Tenho medo de multidão",Mimulus
+892,"Sinto inquietação",Aspen
+893,"O terror me fez tremer",Rock Rose
+894,"Estou sem esperança",Gorse
+895,"Falo depressa demais",Impatiens
+896,"Sou capacho",Centaury
+897,"Sou otimista demais",Agrimony
+898,"Cobro presença",Chicory
+899,"Sou missionário",Vervain
+900,"Não consigo decidir",Scleranthus
+901,"Tenho medo de aranha",Mimulus
+902,"Sinto medo do silêncio",Aspen
+903,"Tive pânico de engasgar",Rock Rose
+904,"Já tentei tudo",Gorse
+905,"Fico nervoso na fila",Impatiens
+906,"Não sei impor",Centaury
+907,"Evito assuntos tristes",Agrimony
+908,"Me sinto dona",Chicory
+909,"Sou tenso",Vervain
+910,"Fico oscilando",Scleranthus
+911,"Tenho medo de estranhos",Mimulus
+912,"Sinto medo de obsessor",Aspen
+913,"Fiquei paralisado",Rock Rose
+914,"Estou resignado",Gorse
+915,"Sou impaciente",Impatiens
+916,"Faço tudo",Centaury
+917,"Estou sempre rindo",Agrimony
+918,"Faço chantagem",Chicory
+919,"Tento convencer",Vervain
+920,"Não sei se compro",Scleranthus
+921,"Tenho medo de errar",Mimulus
+922,"Sinto medo ruim",Aspen
+923,"O pânico suou frio",Rock Rose
+924,"Não tenho fé",Gorse
+925,"Quero agora",Impatiens
+926,"Sou passivo",Centaury
+927,"Odeio brigas",Agrimony
+928,"Organizo a festa",Chicory
+929,"Sou rígido",Vervain
+930,"Fico balançando",Scleranthus
+931,"Tenho medo de injeção",Mimulus
+932,"Sinto medo de dormir",Aspen
+933,"Acordei berrando",Rock Rose
+934,"Estou conformado",Gorse
+935,"Fico irritado",Impatiens
+936,"Não tenho voz",Centaury
+937,"Sou animador",Agrimony
+938,"Sinto que dou muito",Chicory
+939,"Luto contra o sistema",Vervain
+940,"Não sei se viajo",Scleranthus
+941,"Tenho medo de moto",Mimulus
+942,"Sinto medo estranho",Aspen
+943,"O terror emudeceu",Rock Rose
+944,"Não adianta esperança",Gorse
+945,"Sou acelerado",Impatiens
+946,"Faço o que mandam",Centaury
+947,"Finjo não importar",Agrimony
+948,"Sou possessiva",Chicory
+949,"Sou fanático",Vervain
+950,"Fico indeciso",Scleranthus
+951,"Tenho medo de doença",Mimulus
+952,"Sinto medo invisível",Aspen
+953,"Tive ataque de pânico",Rock Rose
+954,"Acredito que é perdido",Gorse
+955,"Não suporto reuniões",Impatiens
+956,"Sou bonzinho demais",Centaury
+957,"Disfarço a dor",Agrimony
+958,"Fico magoada",Chicory
+959,"Sou intenso",Vervain
+960,"Oscilo muito",Scleranthus
+961,"Tenho medo de assalto",Mimulus
+962,"Sinto medo de assombração",Aspen
+963,"Fiquei travado",Rock Rose
+964,"Estou sem esperanças",Gorse
+965,"Fico nervoso",Impatiens
+966,"Não sei dizer não",Centaury
+967,"Sou pacífico",Agrimony
+968,"Corrijo a postura",Chicory
+969,"Sou incansável",Vervain
+970,"Não sei se vou",Scleranthus
+971,"Tenho medo de escada",Mimulus
+972,"Sinto medo não vejo",Aspen
+973,"O pânico correu",Rock Rose
+974,"Aceitei ser infeliz",Gorse
+975,"Como correndo",Impatiens
+976,"Sou submisso",Centaury
+977,"Escondo lágrimas",Agrimony
+978,"Sinto ciúmes",Chicory
+979,"Quero convencer",Vervain
+980,"Fico em dúvida",Scleranthus
+981,"Tenho medo de motorzinho",Mimulus
+982,"Sinto medo ruim",Aspen
+983,"O terror não deixa dormir",Rock Rose
+984,"Desisti de tentar",Gorse
+985,"Não tenho paciência",Impatiens
+986,"Faço tudo",Centaury
+987,"Busco festas",Agrimony
+988,"Sou controladora",Chicory
+989,"Sou entusiasmado",Vervain
+990,"Não sei se corto",Scleranthus
+991,"Tenho medo de cachorro",Mimulus
+992,"Sinto medo funesto",Aspen
+993,"Fiquei paralisado",Rock Rose
+994,"Acho que não tem jeito",Gorse
+995,"Me irrito fácil",Impatiens
+996,"Sou um capacho",Centaury
+997,"Não gosto de tristeza",Agrimony
+998,"Me sinto ofendida",Chicory
+999,"Luto por causas",Vervain
+1000,"Fico indeciso",Scleranthus
