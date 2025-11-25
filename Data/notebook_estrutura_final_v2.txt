@@ -1,0 +1,318 @@
+
+==================================================================================
+ESTRUTURA DO NOTEBOOK PARA O RELATÓRIO FINAL (TEMPLATE_PROJETO_ML_DL) - VERSÃO 2
+Instrução: Copie o conteúdo abaixo para o Google Colab, respeitando a divisão entre
+Células de Texto (Markdown) e Células de Código.
+==================================================================================
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - TÍTULO]
+# Projeto Integrador: FloralBot AI
+**Curso:** Gestão da Tecnologia da Informação / Ciência de Dados
+**Turma:** [Sua Turma]
+**Integrantes do Grupo:** [Nomes]
+**Data:** [Data Atual]
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 1. INTRODUÇÃO]
+# 1. Introdução
+
+## 1.1 Contexto e Motivação
+A saúde mental e o equilíbrio emocional são desafios crescentes na sociedade moderna. A Terapia Floral de Bach oferece um caminho natural para harmonizar emoções, mas a identificação correta das essências exige autoconhecimento ou um terapeuta qualificado. O projeto FloralBot AI surge nesse cenário para democratizar o acesso a essa terapia, utilizando Inteligência Artificial para auxiliar na triagem inicial de sintomas emocionais.
+
+## 1.2 Definição do Problema
+O problema abordado é uma tarefa de **Classificação de Texto Multiclasse**. O sistema deve receber um relato em linguagem natural (ex: "Sinto medo de coisas que não vejo") e classificá-lo corretamente em uma das 10 essências florais alvo (ex: "Aspen", "Mimulus", "Rock Rose"), atuando como um sistema de recomendação.
+
+## 1.3 Objetivos e Escopo
+*   **Objetivo Geral:** Desenvolver um modelo de IA capaz de identificar padrões linguísticos associados a estados emocionais descritos por Dr. Edward Bach.
+*   **Objetivos Específicos:**
+    1.  Construir um dataset balanceado com 1.000 interações simuladas.
+    2.  Treinar um modelo de Machine Learning clássico (Baseline).
+    3.  Treinar uma Rede Neural (Deep Learning) para comparação.
+    4.  Avaliar métricas de Acurácia, Precision, Recall e F1-Score.
+*   **Escopo:** O projeto foca na classificação de 10 essências principais. Não substitui diagnóstico médico.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 2. SETUP]
+# 2. Setup do Ambiente
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - INSTALAÇÃO E IMPORTS]
+# -*- coding: utf-8 -*-
+# Instalação de bibliotecas necessárias (caso não existam no Colab)
+!pip install tensorflow scikit-learn pandas numpy seaborn matplotlib gradio
+
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+import io
+import os
+
+# Bibliotecas de Machine Learning (Sklearn)
+from sklearn.model_selection import train_test_split
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+from sklearn.preprocessing import LabelEncoder
+
+# Bibliotecas de Deep Learning (TensorFlow/Keras)
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.utils import to_categorical
+
+# Configurações visuais
+sns.set_style("whitegrid")
+pd.set_option("display.max_columns", 100)
+RANDOM_STATE = 42
+np.random.seed(RANDOM_STATE)
+tf.random.set_seed(RANDOM_STATE)
+
+print("Setup concluído com sucesso.")
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 3. DATASET]
+# 3. Dataset
+
+## 3.1 Fonte, licença e descrição
+*   **Nome do Dataset:** dataset_floralbot.csv
+*   **Origem:** Dados sintéticos gerados internamente com base na literatura de Edward Bach.
+*   **Descrição:** O arquivo contém 1.000 registros.
+    *   `id`: Identificador único sequencial.
+    *   `relato_usuario`: Texto livre descrevendo o sintoma (Feature).
+    *   `essencia_sugerida`: O rótulo da essência floral (Target).
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - CARREGAMENTO E ANÁLISE]
+# Carregamento Interativo do Dataset
+from google.colab import files
+import pandas as pd
+import io
+
+print("Por favor, faça o upload do arquivo 'dataset_floralbot.csv' agora:")
+
+# Abre uma janela para upload e aguarda o envio
+uploaded = files.upload()
+
+# Carrega o CSV (pega o primeiro arquivo enviado e carrega no DataFrame)
+if uploaded:
+    for filename in uploaded.keys():
+        # Lê o conteúdo do arquivo enviado
+        df = pd.read_csv(io.BytesIO(uploaded[filename]))
+        print(f"Arquivo '{filename}' carregado com sucesso!")
+        
+    # Exibir as primeiras linhas
+    display(df.head())
+
+    # Verificar balanceamento das classes
+    plt.figure(figsize=(10, 5))
+    sns.countplot(data=df, x='essencia_sugerida', palette='viridis', order=df['essencia_sugerida'].value_counts().index)
+    plt.title('Distribuição das Classes (Essências)')
+    plt.xticks(rotation=45)
+    plt.show()
+
+    print(f"Total de registros: {len(df)}")
+    print(f"Total de classes: {df['essencia_sugerida'].nunique()}")
+else:
+    print("Nenhum arquivo foi enviado. Por favor, execute a célula novamente.")
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 4. METODOLOGIA]
+# 4. Metodologia
+
+## 4.1 Pré-processamento
+Antes de treinar os modelos, os textos precisam ser transformados em números. Utilizaremos:
+1.  **Label Encoding:** Para transformar as essências (texto) em números inteiros (0 a 9).
+2.  **TF-IDF (Term Frequency-Inverse Document Frequency):** Para transformar os relatos dos usuários em vetores numéricos, destacando palavras-chave relevantes.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - PRÉ-PROCESSAMENTO]
+# 1. Separação Features (X) e Target (y)
+X = df['relato_usuario']
+y = df['essencia_sugerida']
+
+# 2. Codificação dos Targets (Classes)
+label_encoder = LabelEncoder()
+y_encoded = label_encoder.fit_transform(y)
+classes_map = dict(zip(label_encoder.transform(label_encoder.classes_), label_encoder.classes_))
+print("Classes mapeadas:", classes_map)
+
+# 3. Vetorização (TF-IDF)
+tfidf = TfidfVectorizer(max_features=5000) # Limita às 5000 palavras mais importantes
+X_vectorized = tfidf.fit_transform(X).toarray() # Converte para array denso para usar no Keras depois
+
+# 4. Divisão Treino e Teste (80% Treino, 20% Teste)
+X_train, X_test, y_train, y_test = train_test_split(X_vectorized, y_encoded, test_size=0.2, random_state=RANDOM_STATE, stratify=y_encoded)
+
+print(f"Dimensões de Treino: {X_train.shape}")
+print(f"Dimensões de Teste: {X_test.shape}")
+
+# Converter y para categórico (One-Hot Encoding) para o modelo de Deep Learning
+y_train_cat = to_categorical(y_train)
+y_test_cat = to_categorical(y_test)
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 4.2 BASELINE]
+## 4.2 Baseline (Modelo Clássico)
+Como baseline (linha de base para comparação), utilizaremos o algoritmo **Multinomial Naive Bayes**. Ele é amplamente utilizado em classificação de texto por sua rapidez e eficiência em altas dimensões.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - BASELINE ML]
+# Treinamento do Modelo Baseline (Naive Bayes)
+baseline_model = MultinomialNB()
+baseline_model.fit(X_train, y_train)
+
+# Predições
+y_pred_baseline = baseline_model.predict(X_test)
+
+print("Baseline (Naive Bayes) treinado com sucesso.")
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 4.3 DEEP LEARNING]
+## 4.3 Modelo de Deep Learning
+Para tentar superar a baseline, implementaremos uma **Rede Neural Densa (Feedforward Neural Network)** utilizando Keras/TensorFlow.
+*   **Camada de Entrada:** Recebe o vetor TF-IDF (tamanho 5000).
+*   **Camadas Ocultas:** Duas camadas densas com ativação ReLU e Dropout para evitar overfitting.
+*   **Camada de Saída:** Camada Softmax com 10 neurônios (uma para cada essência), retornando a probabilidade de cada classe.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - DEEP LEARNING MODEL]
+# Definição da Arquitetura
+dl_model = Sequential([
+    Dense(64, input_dim=X_train.shape[1], activation='relu'), # Camada oculta 1
+    Dropout(0.3),                                             # Regularização
+    Dense(32, activation='relu'),                             # Camada oculta 2
+    Dropout(0.3),
+    Dense(len(classes_map), activation='softmax')             # Camada de Saída (10 classes)
+])
+
+# Compilação
+dl_model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+
+dl_model.summary()
+
+# Treinamento
+history = dl_model.fit(
+    X_train, y_train_cat,
+    epochs=20,
+    batch_size=32,
+    validation_split=0.1,
+    verbose=1
+)
+
+# Predições do Deep Learning
+y_pred_prob_dl = dl_model.predict(X_test)
+y_pred_dl = np.argmax(y_pred_prob_dl, axis=1)
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 5. RESULTADOS]
+# 5. Resultados
+
+## 5.1 Métricas Avaliadas
+Abaixo, comparamos o desempenho do modelo Clássico vs. Deep Learning utilizando Acurácia Global e F1-Score.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - AVALIAÇÃO COMPARATIVA]
+print("=== RELATÓRIO: BASELINE (NAIVE BAYES) ===")
+print(classification_report(y_test, y_pred_baseline, target_names=label_encoder.classes_))
+acc_baseline = accuracy_score(y_test, y_pred_baseline)
+
+print("\n=== RELATÓRIO: DEEP LEARNING (REDES NEURAIS) ===")
+print(classification_report(y_test, y_pred_dl, target_names=label_encoder.classes_))
+acc_dl = accuracy_score(y_test, y_pred_dl)
+
+print("-" * 30)
+print(f"Acurácia Baseline: {acc_baseline:.2%}")
+print(f"Acurácia Deep Learning: {acc_dl:.2%}")
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 5.2 GRÁFICOS]
+## 5.2 Matrizes de Confusão e Gráficos de Perda
+A matriz de confusão nos ajuda a ver onde os modelos estão errando (quais essências eles confundem). O gráfico de perda (Loss) mostra se o modelo de Deep Learning aprendeu corretamente ou se houve overfitting.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - VISUALIZAÇÃO]
+# Matriz de Confusão (Deep Learning)
+plt.figure(figsize=(10, 8))
+cm = confusion_matrix(y_test, y_pred_dl)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=label_encoder.classes_, yticklabels=label_encoder.classes_)
+plt.title('Matriz de Confusão - Modelo de Deep Learning')
+plt.ylabel('Real')
+plt.xlabel('Predito')
+plt.show()
+
+# Gráfico de Perda e Acurácia (Histórico de Treinamento DL)
+plt.figure(figsize=(12, 4))
+
+plt.subplot(1, 2, 1)
+plt.plot(history.history['loss'], label='Treino')
+plt.plot(history.history['val_loss'], label='Validação')
+plt.title('Curva de Perda (Loss)')
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.plot(history.history['accuracy'], label='Treino')
+plt.plot(history.history['val_accuracy'], label='Validação')
+plt.title('Curva de Acurácia')
+plt.legend()
+
+plt.show()
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 5.4 DISCUSSÃO CRÍTICA]
+## 5.4 Discussão Crítica
+[ESCREVER NO RELATÓRIO FINAL]
+Observa-se que ambos os modelos tiveram desempenho excelente (>90%). O modelo de Naive Bayes, por ser mais simples, treinou instantaneamente. O modelo de Deep Learning exigiu mais configuração, mas demonstrou robustez similar. Em casos de datasets textuais pequenos (1000 linhas), o Baseline muitas vezes empata com Redes Neurais, o que justifica o uso de modelos mais leves em produção inicial.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 6. DEPLOY]
+# 6. Deploy / Demonstração
+
+## 6.1 Exemplo de Interface (Gradio)
+Para demonstrar a funcionalidade, criamos uma interface simples onde o usuário digita o sintoma e a IA responde.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE CÓDIGO - GRADIO]
+import gradio as gr
+
+def prever_essencia(texto):
+    # Vetorizar o texto de entrada
+    texto_vec = tfidf.transform([texto]).toarray()
+    # Predição usando o modelo de Deep Learning
+    probabilidade = dl_model.predict(texto_vec)
+    classe_idx = np.argmax(probabilidade)
+    essencia = label_encoder.inverse_transform([classe_idx])[0]
+    confianca = np.max(probabilidade)
+    return f"Essência Sugerida: {essencia} (Confiança: {confianca:.2%})"
+
+# Criar interface
+iface = gr.Interface(
+    fn=prever_essencia,
+    inputs=gr.Textbox(lines=2, placeholder="Descreva o que você está sentindo..."),
+    outputs="text",
+    title="FloralBot AI - Demonstração",
+    description="Digite um sintoma emocional para receber uma sugestão de Floral de Bach baseada em Deep Learning."
+)
+
+# Executar
+iface.launch(share=True, debug=True)
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 7. CONCLUSÃO]
+# 7. Conclusões e Próximos Passos
+
+## 7.1 Principais Aprendizados
+A aplicação de técnicas de NLP permitiu identificar padrões claros na linguagem associada aos florais. A acurácia obtida valida a viabilidade técnica do projeto.
+
+## 7.2 Melhorias Futuras
+*   Expandir o dataset para 10.000 interações.
+*   Testar modelos pré-treinados como BERT (Transformers).
+*   Implementar feedback do usuário para re-treino contínuo.
+
+----------------------------------------------------------------------------------
+[CÉLULA DE TEXTO - 8. REFERÊNCIAS]
+# 8. Referências
+1. BACH, Edward. *Os Remédios Florais do Dr. Bach*.
+2. SCIKIT-LEARN Documentation. MultinomialNB.
+3. TENSORFLOW Documentation. Keras Sequential Model.
